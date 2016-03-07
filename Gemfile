@@ -47,3 +47,11 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  # RSpec
+  gem 'rspec-rails'
+  # Cucumber Gems
+  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails-training-wheels'
+  gem 'database_cleaner'
+end
