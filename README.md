@@ -1,6 +1,6 @@
 # ProjectPortal
 
-ProjectPortal, a portal for CS 169 Projects. Created by Group34 of CS169, Spring 2016.
+[ProjectPortal](http://projectportal-169.herokuapp.com/), a portal for CS 169 Projects. Created by Group34 of CS169, Spring 2016.
 
 ## Badges and Links
 
@@ -15,4 +15,4 @@ ProjectPortal, a portal for CS 169 Projects. Created by Group34 of CS169, Spring
 
 ## Iteration Submision Dates
 
-Iteration 1-1: 2016/3/4
+Iteration 1-1: 2016/3/6
