@@ -1,0 +1,8 @@
+language: ruby
+rvm:
+  - 2.3.0
+addons:
+    code_climate:
+        repo_token: 52d08f794c3ed1ebaf870af28bda8827278698e4b89e60ca41c5e3424c884e79
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
