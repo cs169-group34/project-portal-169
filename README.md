@@ -11,7 +11,7 @@ ProjectPortal, a portal for CS 169 Projects. Created by Group34 of CS169, Spring
 [![Test Coverage](https://codeclimate.com/github/cs169-group34/project-portal-169/badges/coverage.svg)](https://codeclimate.com/github/cs169-group34/project-portal-169/coverage)
 [![Issue Count](https://codeclimate.com/github/cs169-group34/project-portal-169/badges/issue_count.svg)](https://codeclimate.com/github/cs169-group34/project-portal-169)
 
-[PivotalTracker]https://www.pivotaltracker.com/n/projects/1549389
+[PivotalTracker](https://www.pivotaltracker.com/n/projects/1549389)
 
 ## Iteration Submision Dates
 
