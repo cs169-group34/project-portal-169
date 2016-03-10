@@ -24,7 +24,7 @@ end
 
 Then /^(?:|I )should see the list of projects$/ do
   Project.all.each { |project|
-    page.should have_content(project.name)
+    page.should have_content(project.title)
     page.should have_content(project.content)
   }
 end
