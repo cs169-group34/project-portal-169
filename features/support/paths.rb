@@ -18,7 +18,7 @@ module NavigationHelpers
     when /^the project submit page$/
       '/projects/new'
     when /^the project details page for project with name: "(.*)"$/
-      project_path(Project.find_by(name: $1))
+      project_path(Project.find_by(title: $1))
     when /^the project list page$/
       '/projects'
 
