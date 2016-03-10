@@ -4,9 +4,9 @@ Feature: student see all projects
     I want to see a list of all projects
 
 Background: on home page
-    Given I am in the home page
+    Given I am on the home page
     
 Scenario:
-    When I press "submit"
-    Then I should be on project list page
-    And I should a list of projects
+    When I follow "Project List"
+    Then I should be on the project list page
+    And I should see the list of projects

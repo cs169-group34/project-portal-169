@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------
-# * General Inputs
+# * General Steps
 #------------------------------------------------------------------------------
 
 When /^(?:|I )input my name: "(.*)"$/ do |name|
@@ -14,17 +14,31 @@ When /^(?:|I )input my password: "(.*)"$/ do |password|
   fill_in("password", with: password)
 end
 
-
 #------------------------------------------------------------------------------
-# * Student Team Inputs
+# * Student Steps
 #------------------------------------------------------------------------------
 
 When /^(?:|I )input my team name: "(.*)"$/ do |team_name|
   fill_in("team-name", with: team_name)
 end
 
+When /^(?:| I) should see the list of projects$/ do
+  Project.all.each { |project|
+    page.should have_content(project.name)
+    page.should have_content(project.content)
+  }
+end
+
 #------------------------------------------------------------------------------
-# * Project Inputs
+# * GSI Steps
+#------------------------------------------------------------------------------
+
+When /^(?:|I )should see a list of students$/ do
+  
+end
+
+#------------------------------------------------------------------------------
+# * Customer Steps
 #------------------------------------------------------------------------------
 
 When /^(?:|I )input my project title: "(.*)"$/ do |project_title|
@@ -33,8 +47,4 @@ end
 
 When /^(?:|I )input my project content: "(.*)"$/ do |project_content|
   fill_in("project-content", with: project_content)
-end
-
-When /^(?:|I )should see a list of students$/ do
-  
 end

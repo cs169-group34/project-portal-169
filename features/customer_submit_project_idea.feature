@@ -10,6 +10,6 @@ Scenario:
     When I input my project title: "Awesome Project"
     And I input my project content: "Not really so awesome."
     And I press "Submit Project"
-    Then I should be on the project details page
+    Then I should be on the project details page for project with name "Awesome Project"
     And I should see "Awesome Project"
     And I should see "Not really so awesome."
