@@ -3,15 +3,15 @@
 #------------------------------------------------------------------------------
 
 When /^(?:|I )input my name: "(.*)"$/ do |name|
-  fill_in("name", name)
+  fill_in("name", with: name)
 end
 
 When /^(?:|I )input my email: "(.*)"$/ do |email|
-   fill_in("email", email) 
+   fill_in("email", with: email) 
 end
 
 When /^(?:|I )input my password: "(.*)"$/ do |password|
-  fill_in("password", password)
+  fill_in("password", with: password)
 end
 
 
@@ -20,7 +20,7 @@ end
 #------------------------------------------------------------------------------
 
 When /^(?:|I )input my team name: "(.*)"$/ do |team_name|
-  fill_in("team-name", team_name)
+  fill_in("team-name", with: team_name)
 end
 
 #------------------------------------------------------------------------------
@@ -28,11 +28,11 @@ end
 #------------------------------------------------------------------------------
 
 When /^(?:|I )input my project title: "(.*)"$/ do |project_title|
-  fill_in("project-title", project_title)
+  fill_in("project-title", with: project_title)
 end
 
 When /^(?:|I )input my project content: "(.*)"$/ do |project_content|
-  fill_in("project-content", project_content)
+  fill_in("project-content", with: project_content)
 end
 
 When /^(?:|I )should see a list of students$/ do
