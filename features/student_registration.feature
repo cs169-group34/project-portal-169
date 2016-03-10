@@ -4,7 +4,7 @@ Feature: student registration
     We want to make an account
 
 Background: on student registration page
-    Given I am on student registration page
+    Given I am on the student registration page
     
 Scenario:
     When I input my team name: "Sample Student Team"

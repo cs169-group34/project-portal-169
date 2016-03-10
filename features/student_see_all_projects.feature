@@ -4,7 +4,7 @@ Feature: student see all projects
     I want to see a list of all projects
 
 Background: on home page
-    Given I am in home page
+    Given I am in the home page
     
 Scenario:
     When I press "submit"

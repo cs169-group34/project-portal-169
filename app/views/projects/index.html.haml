@@ -1,0 +1,12 @@
+%h1 List of Projects
+
+%table#projects
+  %thead
+    %tr
+      %th Project Name
+      %th Project Content
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= project.title
+        %td= project.content

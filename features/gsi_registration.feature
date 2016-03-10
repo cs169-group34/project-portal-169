@@ -4,7 +4,7 @@ Feature: GSI registration
     I want to make an account
 
 Background: on GSI registration page
-    Given I am on GSI registration page
+    Given I am on the GSI registration page
     
 Scenario:
     When I input my name: "Cool GSI"

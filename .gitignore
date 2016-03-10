@@ -12,4 +12,6 @@
 !/log/.keep
 /tmp
 
-/db
+/db/schema.rb
+/db/seeds.rb
+/db/project-portal_development
