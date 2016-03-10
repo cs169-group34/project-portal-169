@@ -1,13 +1,12 @@
 %h2 New Project
 
 = form_tag projects_path do
-  %p
-  = label :project, :title, 'Title'
-  %br
-  = text_field :project, 'title', id: 'project-title'
-  %p
-  = label :project, :content, 'Content'
-  %br
-  = text_area :project, 'content', id: 'project-content'
-  %p
-  = submit_tag 'Submit Project'
+    = label :project, :title, 'Title'
+    %br
+    = text_field :project, 'title', id: 'project-title'
+    %br
+    = label :project, :content, 'Content'
+    %br
+    = text_area :project, 'content', id: 'project-content'
+    %br
+    = submit_tag 'Submit Project'
