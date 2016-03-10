@@ -22,7 +22,7 @@ When /^(?:|I )input my team name: "(.*)"$/ do |team_name|
   fill_in("team-name", with: team_name)
 end
 
-When /^(?:| I) should see the list of projects$/ do
+Then /^(?:|I )should see the list of projects$/ do
   Project.all.each { |project|
     page.should have_content(project.name)
     page.should have_content(project.content)
@@ -33,7 +33,7 @@ end
 # * GSI Steps
 #------------------------------------------------------------------------------
 
-When /^(?:|I )should see a list of students$/ do
+Then /^(?:|I )should see the list of students$/ do
   
 end
 
