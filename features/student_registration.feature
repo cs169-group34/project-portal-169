@@ -4,11 +4,13 @@ Feature: student registration
     We want to make an account
 
 Background: on student registration page
-    Given I am in student registration page
+    Given I am on student registration page
     
 Scenario:
-    When I input my email
-    And I input my password
+    When I input my team name: "Sample Student Team"
+    And I input my email: "studentteam@berkeley.edu"
+    And I input my password: "studentpassword"
     And I press "submit"
-    Then I should be on the profile page
-    Then I should see my name
+    Then I should be on profile page
+    And I should see "Sample Student Team"
+    And I should see "studentteam@berkeley.edu"

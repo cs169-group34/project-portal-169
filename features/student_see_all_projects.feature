@@ -8,5 +8,5 @@ Background: on home page
     
 Scenario:
     When I press "submit"
-    Then I should be on the project list page
-    Then I should a list of projects
+    Then I should be on project list page
+    And I should a list of projects

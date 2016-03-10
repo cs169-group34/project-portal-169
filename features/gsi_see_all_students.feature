@@ -4,9 +4,9 @@ Feature: GSI see all students
     I want to see a list of all student teams
     
 Background: on home page
-    Given I am in home page
+    Given I am on home page
     
 Scenario:
-    And I press "Student List"
-    Then I should be on the student list page
-    Then I should see a list of students
+    When I press "Student List"
+    Then I should be on student list page
+    And I should see a list of students

@@ -7,8 +7,9 @@ Background: on customer project submit page
     Given I am in project submit page
     
 Scenario:
-    When I input my project title
-    And I input my project content
+    When I input my project title: "Awesome Project"
+    And I input my project content: "Not really so awesome."
     And I press "submit"
-    Then I should be on the project details page
-    Then I should see my project title
+    Then I should be on project details page
+    And I should see "Awesome Project"
+    And I should see "Not really so awesome."
