@@ -35,13 +35,13 @@ gem 'haml'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Use sqlite for dev and testing since Cloud9 doesn't like postgres
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
 
 group :development do
-  # Use sqlite for testing since Cloud9 doesn't like postgres
-  gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
