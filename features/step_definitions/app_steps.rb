@@ -33,8 +33,11 @@ end
 # * GSI Steps
 #------------------------------------------------------------------------------
 
-Then /^(?:|I )should see the list of students$/ do
-  
+Then /^(?:|I )should see a list of students$/ do
+  StudentTeam.all.each { |team|
+    page.should have_content(team.name)
+    page.should have_content(team.email)
+  }
 end
 
 #------------------------------------------------------------------------------

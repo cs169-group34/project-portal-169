@@ -1,0 +1,12 @@
+%h1 List of Student Teams
+
+%table#projects
+  %thead
+    %tr
+      %th Student Team Name
+      %th Student Team E-mail
+  %tbody
+    - @student_teams.each do |team|
+      %tr
+        %td= team.name
+        %td= team.email

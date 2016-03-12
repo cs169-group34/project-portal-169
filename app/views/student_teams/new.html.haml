@@ -1,0 +1,16 @@
+%h2 New Student Team
+
+= form_tag student_teams_path do
+    = label :student_team, :name, 'Team Name:'
+    %br
+    = text_field :student_team, 'name', id: 'team-name'
+    %p
+    = label :student_team, :email, 'E-mail Address:'
+    %br
+    = text_field :student_team, 'email', id: 'email'
+    %p
+    = label :student_team, :password, 'Password: '
+    %br
+    = password_field :student_team, 'password', id: 'password'
+    %p
+    = submit_tag 'Create New Team'

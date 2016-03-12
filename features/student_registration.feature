@@ -10,7 +10,7 @@ Scenario:
     When I input my team name: "Sample Student Team"
     And I input my email: "studentteam@berkeley.edu"
     And I input my password: "studentpassword"
-    And I press "submit"
-    Then I should be on profile page
+    And I press "Create New Team"
+    Then I should be on the profile page for the student team: "Sample Student Team"
     And I should see "Sample Student Team"
     And I should see "studentteam@berkeley.edu"

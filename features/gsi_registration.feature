@@ -10,6 +10,7 @@ Scenario:
     When I input my name: "Cool GSI"
     And I input my email: "bestgsi@berkeley.edu"
     And I input my password: "secretgsipass"
-    And I press "submit"
-    Then I should be on profile page
+    And I press "Create New Account"
+    Then I should be on the profile page for the GSI with name: "Cool GSI"
     And I should see "Cool GSI"
+    And I should see "bestgsi@berkeley.edu"

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :projects
+  resources :instructors
+  resources :student_teams
   
   root 'welcome#index'
   

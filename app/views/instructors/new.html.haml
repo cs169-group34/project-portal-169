@@ -1,0 +1,16 @@
+%h2 New GSI Account
+
+= form_tag instructors_path do
+    = label :instructor, :name, 'Name:'
+    %br
+    = text_field :instructor, 'name', id: 'name'
+    %p
+    = label :instructor, :email, 'E-mail Address:'
+    %br
+    = text_field :instructor, 'email', id: 'email'
+    %p
+    = label :instructor, :password, 'Password: '
+    %br
+    = password_field :instructor, 'password', id: 'password'
+    %p
+    = submit_tag 'Create New Account'

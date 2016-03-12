@@ -7,6 +7,6 @@ Background: on home page
     Given I am on the home page
     
 Scenario:
-    When I press "Student List"
-    Then I should be on student list page
+    When I follow "Student List"
+    Then I should be on the student list page
     And I should see a list of students
