@@ -18,18 +18,9 @@ end
 # * Student Steps
 #------------------------------------------------------------------------------
 
-<<<<<<< HEAD
 Given /^I have a student team named "(.*)"$/ do |team_name|
   @student_team = StudentTeam.create(name: team_name, 
       email: "default_email", password: "default_password")
-=======
-Given /^the student team "(.*)" exists$/ do |team_name|
-  Student.create()
-end
-
-Given /^my student team is "(.*)"$/ do |team_name|
-  @student = Student.find_by(name: team_name)
->>>>>>> d5ab2f69dd777af4f44c22f24a6c91b72450dd11
 end
 
 When /^(?:|I )input my team name: "(.*)"$/ do |team_name|
