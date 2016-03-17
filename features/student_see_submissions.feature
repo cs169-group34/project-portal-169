@@ -8,9 +8,9 @@ Background: On Student Profile Page
     And my student team is "Lazy Students"
     
     And the following iteration submissions for my student team exist:
-    | name          | stories              | comments                       | 
-    | Iteration 1-1 | This is a user story | This is a weird comment.       |
-    | Iteration 1-2 | Another user story   | This is another weird comment. |
+    | name          | stories              | comments                       | timestamp           |
+    | Iteration 1-1 | This is a user story | This is a weird comment.       | 2016-03-16 10:11:55 |
+    | Iteration 1-2 | Another user story   | This is another weird comment. | 2016-03-16 12:23:56 |
     
     And I am on the home page
     
