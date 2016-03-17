@@ -18,6 +18,14 @@ end
 # * Student Steps
 #------------------------------------------------------------------------------
 
+Given /^the student team "(.*)" exists$/ do |team_name|
+  Student.create()
+end
+
+Given /^my student team is "(.*)"$/ do |team_name|
+  @student = Student.find_by(name: team_name)
+end
+
 When /^(?:|I )input my team name: "(.*)"$/ do |team_name|
   fill_in("team-name", with: team_name)
 end
@@ -50,4 +58,15 @@ end
 
 When /^(?:|I )input my project content: "(.*)"$/ do |project_content|
   fill_in("project-content", with: project_content)
+end
+
+#------------------------------------------------------------------------------
+# * Iteration Steps
+#------------------------------------------------------------------------------
+
+Given /^the following iteration submissions for my student team exist$/ do |iterations|
+  iterations.hashes.each do |iteration| 
+    
+  end
+  fail "Unimplemented."
 end
