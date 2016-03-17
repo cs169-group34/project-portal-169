@@ -11,6 +11,7 @@ Background: On Student Profile Page
     | 1         | This is a user story | This is a weird comment.       |
     | 2         | Another user story   | This is another weird comment. |
     
+    And I am logged in as my student team
     And I am on the profile page for the student team: "Lazy Students"
     
 Scenario:

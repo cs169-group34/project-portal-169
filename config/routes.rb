@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
+  get "login" => "login#index"
+  post "login" => "login#login"
+
   resources :projects
   resources :instructors
   resources :student_teams
   
   root 'welcome#index'
+  
+  get "/student_teams/:id/submit_story/" => "student_teams#new_story"
+  post "/student_teams/:id/submit_story/" => "student_teams#create_story"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

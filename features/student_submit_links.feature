@@ -4,9 +4,9 @@ Feature: Student Team Submit Links
     I want to be able to enter links onto my profile page (GitHub, Heroku, CodeClimate, Pivotal Tracker)
     
 Background: On Student Edit Profile Page
-    Given the student team "Lazy Students" exists
-    And my student team is "Lazy Students"
-    And I am on the profile edit page for my student team
+    Given I have a student team named "Lazy Students"
+    And I am logged in as my student team
+    And I am on the profile edit page for the student team: "Lazy Students"
     
 Scenario:
     When I input my GitHub link: "https://github.com/cs169-group34/project-portal-169"

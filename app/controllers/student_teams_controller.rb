@@ -15,19 +15,71 @@ class StudentTeamsController < ApplicationController
       redirect_to(student_team_path(@student_team))
     end
     
-    # Then I should see the iteration submission "Iteration 1-1" for my student team
-    # And I should see the user stories for that submission
-    # And I should see the team comments for that submission
-    
     def show
-      @student_team = StudentTeam.find(params[:id])
-      @iterations = @student_team.iterations
+      if access_profile_page?(params[:id].to_i)
+         @student_team = StudentTeam.find(params[:id])
+         @iterations = @student_team.iterations
+      else
+        return render body: "You shouldn't be looking at this page."
+      end
+    end
+    
+    def new_story
+      if access_profile_page?(params[:id].to_i)
+        @student_team = StudentTeam.find(params[:id])
+      else
+        return render body: "You shouldn't be looking at this page."
+      end
+    end
+    
+    def create_story
+      @student_team = StudentTeam.find(session[:user_id])
+      params[:iteration][:iteration] = get_next_iteration
+      @student_team.iterations.create(iteration_params)
+      return redirect_to(student_team_path(@student_team))
     end
     
     private
     
+    #--------------------------------------------------------------------------
+    # * Student Team Creation
+    #--------------------------------------------------------------------------
+    
     def student_team_params
       params.require(:student_team).permit(:name, :email, :password) 
+    end
+    
+    #--------------------------------------------------------------------------
+    # * Iteration Creation
+    #--------------------------------------------------------------------------
+    
+    def iteration_params
+      params.require(:iteration).permit(:iteration, :user_stories, :comments)
+    end
+    
+    def get_next_iteration
+      next_iteration = 1
+      @student_team.iterations.each { |iteration|
+        next_iteration = iteration + 1 if iteration >= next_iteration
+      }
+      return next_iteration
+    end
+    
+    #--------------------------------------------------------------------------
+    # * Permissions
+    #--------------------------------------------------------------------------
+    
+    def logged_in_as_student
+      return session[:user_type] == 1
+    end
+    
+    def logged_in_as_instructor
+      return session[:user_type] == 2
+    end
+    
+    def access_profile_page?(id)
+      return true if logged_in_as_instructor 
+      return (logged_in_as_student and session[:user_id] == id)
     end
     
 end

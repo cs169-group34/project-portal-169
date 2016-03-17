@@ -23,6 +23,13 @@ Given /^I have a student team named "(.*)"$/ do |team_name|
       email: "default_email", password: "default_password")
 end
 
+Given /^I am logged in as my student team$/ do
+  visit("/login")
+  fill_in("email", with: @student_team.email)
+  fill_in("password", with: @student_team.password)
+  click_button("Login")
+end
+
 When /^(?:|I )input my team name: "(.*)"$/ do |team_name|
   fill_in("team-name", with: team_name)
 end
@@ -80,4 +87,12 @@ end
 
 Then /^I should see the team comments for that submission$/ do
   page.should have_content(@iteration.comments)
+end
+
+When /^I input my iteration user stories: "(.*)"$/ do |user_stories|
+  fill_in("iteration_user_stories", with: user_stories)
+end
+
+When /^I input my iteration comment: "(.*)"$/ do |comment|
+  fill_in("iteration_comments", with: comment)
 end

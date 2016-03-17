@@ -15,7 +15,8 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-      
+    when /^the login page$/
+      '/login'
     when /^the project submit page$/
       '/projects/new'
     when /^the project details page for project with name: "(.*)"$/
@@ -34,7 +35,9 @@ module NavigationHelpers
       student_team_path(StudentTeam.find_by(name: $1))
     when /^the student list page$/
       '/student_teams'
-      
+    when /^the iteration submission page for the student team: "(.*)"$/
+      "/student_teams/#{StudentTeam.find_by(name: $1).id}/submit_story"
+    
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

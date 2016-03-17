@@ -2,17 +2,18 @@
 %br
 ="Email: #{@student_team.email}" 
 %h2 Iterations
-- @iterations.each_with_index do |iteration, index|
+- @iterations.each do |iteration|
   .iteration
-    =iteration.iteration_string
+    %h3=iteration.iteration_string
     %p
-    ="Date: #{iteration.created_at}"
+    %strong Date: 
+    ="#{iteration.created_at_string}"
     %p
-    "User Stories"
+    %strong User Stories:
     %br
     =iteration.user_stories
     %p
-    "Comments"
+    %strong Comments:
     %br
     =iteration.comments
     
