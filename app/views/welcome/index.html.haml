@@ -1,5 +1,12 @@
 %h2 Home Page
-
+- if @current_user
+  - if @current_user.is_a?(StudentTeam)
+    =link_to("Profile Page", student_team_path(@current_user))
+  - elsif @current_user.is_a?(Instructor)
+    =link_to("Profile Page", instructor_path(@current_user))
+- else
+  = "You are not logged in."
+%br
 =link_to("Project List", projects_path)
 %br
 =link_to("Student List", student_teams_path)

@@ -1,5 +1,5 @@
-# Start CodeClimate
 if Rails.env.test?
+    # Start CodeClimate
     require 'codeclimate-test-reporter'
     CodeClimate::TestReporter.start
 end

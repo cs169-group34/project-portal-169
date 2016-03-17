@@ -18,12 +18,9 @@ end
 # * Student Steps
 #------------------------------------------------------------------------------
 
-Given /^the student team "(.*)" exists$/ do |team_name|
-
-end
-
-Given /^my student team is "(.*)"$/ do |team_name|
-  @student = Student.find_by(name: team_name)
+Given /^I have a student team named "(.*)"$/ do |team_name|
+  @student_team = StudentTeam.create(name: team_name, 
+      email: "default_email", password: "default_password")
 end
 
 When /^(?:|I )input my team name: "(.*)"$/ do |team_name|
@@ -64,9 +61,23 @@ end
 # * Iteration Steps
 #------------------------------------------------------------------------------
 
-Given /^the following iteration submissions for my student team exist$/ do |iterations|
-  iterations.hashes.each do |iteration| 
-    
+Given /^the following iteration submissions for my student team exist:$/ do |iterations|
+  iterations.hashes.each do |iteration|
+    @student_team.iterations.create(iteration: iteration['iteration'], 
+        user_stories: iteration['stories'], comments: iteration['comments'])
   end
-  fail "Unimplemented."
+end
+
+Then /^I should see the iteration submission "(.*)" for my student team$/ do |iter_str|
+  iter_num = get_iteration_from_string(iter_str)
+  @iteration = @student_team.iterations.find_by(iteration: iter_num)
+  page.should have_content(iter_str)
+end
+
+Then /^I should see the user stories for that submission$/ do
+  page.should have_content(@iteration.user_stories)
+end
+
+Then /^I should see the team comments for that submission$/ do
+  page.should have_content(@iteration.comments)
 end

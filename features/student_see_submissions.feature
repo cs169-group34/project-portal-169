@@ -4,20 +4,16 @@ Feature: Student Team Iteration Submissions
     I want to see a list of all of my iteration submissions on my profile page
     
 Background: On Student Profile Page
-    Given the student team "Lazy Students" exists
-    And my student team is "Lazy Students"
+    Given I have a student team named "Lazy Students"
     
     And the following iteration submissions for my student team exist:
-    | name          | stories              | comments                       | timestamp           |
-    | Iteration 1-1 | This is a user story | This is a weird comment.       | 2016-03-16 10:11:55 |
-    | Iteration 1-2 | Another user story   | This is another weird comment. | 2016-03-16 12:23:56 |
+    | iteration | stories              | comments                       |
+    | 1         | This is a user story | This is a weird comment.       |
+    | 2         | Another user story   | This is another weird comment. |
     
-    And I am on the home page
+    And I am on the profile page for the student team: "Lazy Students"
     
 Scenario:
-    When I follow "Profile Page"
-    Then I should be on the profile page for my student team
-    
     Then I should see the iteration submission "Iteration 1-1" for my student team
     And I should see the user stories for that submission
     And I should see the team comments for that submission
