@@ -9,8 +9,7 @@ class StudentTeamsController < ApplicationController
     end
     
     def create
-      @student_team = StudentTeam.new(student_team_params)
-      @student_team.save
+      @student_team = StudentTeam.create(student_team_params)
       redirect_to(student_team_path(@student_team))
     end
     
