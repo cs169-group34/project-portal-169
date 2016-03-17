@@ -25,7 +25,7 @@ class StudentTeamsController < ApplicationController
     end
     
     def new_story
-      if access_profile_page?(params[:id].to_i)
+      if can_edit_profile_page?(params[:id].to_i)
         @student_team = StudentTeam.find(params[:id])
       else
         return render body: "You shouldn't be looking at this page."
@@ -79,6 +79,10 @@ class StudentTeamsController < ApplicationController
     
     def access_profile_page?(id)
       return true if logged_in_as_instructor 
+      return edit_profile_page?(id)
+    end
+    
+    def can_edit_profile_page?(id)
       return (logged_in_as_student and session[:user_id] == id)
     end
     
