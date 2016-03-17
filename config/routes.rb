@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get "logout" => "logout#index"
+
   get "login" => "login#index"
   post "login" => "login#login"
 
