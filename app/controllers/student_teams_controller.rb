@@ -79,7 +79,7 @@ class StudentTeamsController < ApplicationController
     
     def access_profile_page?(id)
       return true if logged_in_as_instructor 
-      return edit_profile_page?(id)
+      return can_edit_profile_page?(id)
     end
     
     def can_edit_profile_page?(id)
