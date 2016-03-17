@@ -19,7 +19,7 @@ end
 #------------------------------------------------------------------------------
 
 Given /^the student team "(.*)" exists$/ do |team_name|
-  Student.create()
+
 end
 
 Given /^my student team is "(.*)"$/ do |team_name|
