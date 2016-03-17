@@ -1,3 +1,18 @@
 = "Name: #{@student_team.name}"
 %br
 ="Email: #{@student_team.email}" 
+%h2 Iterations
+- @iterations.each_with_index do |iteration, index|
+  .iteration
+    =iteration.iteration_string
+    %p
+    ="Date: #{iteration.created_at}"
+    %p
+    "User Stories"
+    %br
+    =iteration.user_stories
+    %p
+    "Comments"
+    %br
+    =iteration.comments
+    
