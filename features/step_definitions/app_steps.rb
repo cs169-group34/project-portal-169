@@ -110,7 +110,7 @@ When /^I input my iteration comment: "(.*)"$/ do |comment|
 end
 
 #------------------------------------------------------------------------------
-# * Creation Steps
+# * Creation Steps (for batch creating objects)
 #------------------------------------------------------------------------------
 
 Given /the following (.*?) exist:$/ do |type, table|
@@ -136,8 +136,6 @@ Given /the following (.*?) exist:$/ do |type, table|
           password: "default_password"
         )
         s.instructor = Instructors.find_by_name(element[:gsi])
-        
     end
-      
   end
 end
