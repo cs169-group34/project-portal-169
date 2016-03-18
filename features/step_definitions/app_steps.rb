@@ -45,6 +45,18 @@ end
 # * GSI Steps
 #------------------------------------------------------------------------------
 
+Given /^I have a gsi named "(.*)"$/ do |gsi_name|
+  @gsi = Instructor.create(name: gsi_name, 
+      email: "default_email", password: "default_password")
+end
+
+Given /^I am logged in as my gsi$/ do
+  visit("/login")
+  fill_in("email", with: @gsi.email)
+  fill_in("password", with: @gsi.password)
+  click_button("Login")
+end
+
 Then /^(?:|I )should see a list of students$/ do
   StudentTeam.all.each { |team|
     page.should have_content(team.name)
@@ -95,4 +107,37 @@ end
 
 When /^I input my iteration comment: "(.*)"$/ do |comment|
   fill_in("iteration_comments", with: comment)
+end
+
+#------------------------------------------------------------------------------
+# * Creation Steps
+#------------------------------------------------------------------------------
+
+Given /the following (.*?) exist:$/ do |type, table|
+  table.hashes.map do |element|
+    case type
+      when "projects"
+        p = Project.create(
+          title: element[:title],
+          content: element[:content],
+        )
+        p.studentteam << StudentTeam.find_by_name(element[:student_team])
+      when "instructors"
+        i = Instructor.create(
+          name: element[:name],
+          email: element[:email],
+          password: "default_password"
+        )
+        i.studentteam = StudentTeam.find_by_name(team_name)
+      when "student teams"
+        s = StudentTeam.create(
+          name: element[:name], 
+          email: element[:email],
+          password: "default_password"
+        )
+        s.instructor = Instructors.find_by_name(element[:gsi])
+        
+    end
+      
+  end
 end
