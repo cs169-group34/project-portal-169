@@ -10,6 +10,5 @@ Background: On Student Profile Page
 Scenario:
     When I input my comment: "Cool Project"
     And I press "Submit"
-    Then I should see: "Comment Submitted"
-    When I follow "See Comment"
-    Then I should see: "Cool Project"
+    Then I should be on the profile page for the student team: "Lazy Students"
+    And I should see: "Cool Project"

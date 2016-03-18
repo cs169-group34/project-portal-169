@@ -12,8 +12,7 @@ Scenario:
     And I input my grade: "100"
     And I check "Private"
     And I press "Submit"
-    Then I should see: "Comment Submitted"
-    When I follow "See Comment"
-    Then I should see: "Cool Project"
+    Then I should be on the profile page for the student team: "Lazy Students"
+    And I should see: "Cool Project"
     Then I should see: "Grade: 100/100"
     
