@@ -52,6 +52,18 @@ Then /^(?:|I )should see a list of students$/ do
   }
 end
 
+Then /^(?:|I )should see a list of comments$/ do
+  StudentTeam.all.each { |team|
+    page.should have_content(team.comments)
+  }
+end
+
+Then /^(?:|I )should see a list of grades$/ do
+  StudentTeam.all.each { |team|
+    page.should have_content(team.grades)
+  }
+end
+
 #------------------------------------------------------------------------------
 # * Customer Steps
 #------------------------------------------------------------------------------
