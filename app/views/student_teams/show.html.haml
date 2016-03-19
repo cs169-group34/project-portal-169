@@ -1,6 +1,18 @@
 = "Name: #{@student_team.name}"
 %br
-="Email: #{@student_team.email}" 
+="Email: #{@student_team.email}"
+
+%h2 Project Information
+
+=link_to("GitHub Repository", @student_team.github_link)
+%br
+=link_to("Heroku Deployment", @student_team.heroku_link)
+%br
+=link_to("CodeClimate Analysis", @student_team.codeclimate_link)
+%br
+=link_to("Pivotal Tracker", @student_team.pivotal_link)
+%p
+=link_to("Edit Profile Page", edit_student_team_path(@student_team))
 %h2 Iterations
 - @iterations.each do |iteration|
   .iteration

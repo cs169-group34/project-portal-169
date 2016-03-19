@@ -18,16 +18,20 @@ end
 # * Student Steps
 #------------------------------------------------------------------------------
 
-Given /^I have a student team named "(.*)"$/ do |team_name|
+Given /^(?:|I )have a student team named "(.*)"$/ do |team_name|
   @student_team = StudentTeam.create(name: team_name, 
       email: "default_email", password: "default_password")
 end
 
-Given /^I am logged in as my student team$/ do
+Given /^(?:|I )am logged in as my student team$/ do
   visit("/login")
   fill_in("email", with: @student_team.email)
   fill_in("password", with: @student_team.password)
   click_button("Login")
+end
+
+When /^(?:|I )update my student team$/ do 
+  @student_team = StudentTeam.find(@student_team.id)
 end
 
 When /^(?:|I )input my team name: "(.*)"$/ do |team_name|
@@ -39,6 +43,42 @@ Then /^(?:|I )should see the list of projects$/ do
     page.should have_content(project.title)
     page.should have_content(project.content)
   }
+end
+
+#------------------------------------------------------------------------------
+# * Project Link Steps
+#------------------------------------------------------------------------------
+    
+When /^(?:|I )input my GitHub link: "(.*)"$/ do |github_link|
+  fill_in("student_team_github_link", with: github_link)
+end
+
+When /^(?:|I )input my Heroku link: "(.*)"$/ do |heroku_link|
+  fill_in("student_team_heroku_link", with: heroku_link)
+end
+
+When /^(?:|I )input my CodeClimate link: "(.*)"$/ do |codeclimate_link|
+  fill_in("student_team_codeclimate_link", with: codeclimate_link)
+end
+
+When /^(?:|I )input my Pivotal Tracker link: "(.*)"$/ do |pivotal_link|
+  fill_in("student_team_pivotal_link", with: pivotal_link)
+end
+
+Then /^(?:|I )should see the GitHub link for my student team$/ do
+  page.should have_link("GitHub Repository", href: @student_team.github_link)
+end
+
+Then /^(?:|I )should see the Heroku link for my student team$/ do
+  page.should have_link("Heroku Deployment", href: @student_team.heroku_link)
+end
+
+Then /^(?:|I )should see the CodeClimate link for my student team$/ do
+  page.should have_link("CodeClimate Analysis", href: @student_team.codeclimate_link)
+end
+
+Then /^(?:|I )should see the Pivotal Tracker link for my student team$/ do
+  page.should have_link("Pivotal Tracker", href: @student_team.pivotal_link)
 end
 
 #------------------------------------------------------------------------------

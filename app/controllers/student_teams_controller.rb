@@ -15,6 +15,27 @@ class StudentTeamsController < ApplicationController
       redirect_to(student_team_path(@student_team))
     end
     
+    def edit
+      if can_edit_profile_page?(params[:id].to_i)
+         @student_team = StudentTeam.find(params[:id])
+      else
+        return render body: "You shouldn't be looking at this page."
+      end
+    end
+    
+    def update
+      if can_edit_profile_page?(params[:id].to_i)
+        @student_team = StudentTeam.find(params[:id])
+        links = [:github_link, :heroku_link, :codeclimate_link, :pivotal_link]
+        links.each { |attr|
+           @student_team.update_attribute(attr, params[:student_team][attr])
+        }
+        redirect_to(student_team_path(@student_team))
+      else
+        return render body: "You shouldn't be looking at this page."
+      end
+    end
+    
     def show
       if access_profile_page?(params[:id].to_i)
          @student_team = StudentTeam.find(params[:id])
