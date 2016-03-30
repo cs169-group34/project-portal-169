@@ -1,0 +1,65 @@
+// Place all the styles related to the common2 controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*TODO: apparently padding and width interaction varies from browser to browser,
+need to check if browsers conform to standards, otherwise force a standard.
+example link: http://stackoverflow.com/questions/4698054/css-does-the-width-include-the-padding
+*/
+
+/*may possibly want to upload font files locally instead of using web to make
+sure it works in case can't connect to servers presumably located in JP*/
+
+#sidebar {
+     background-color: #3e4146;
+     
+     font-family: magic, 'Courier New', monospace;
+     font-size: 24px;
+
+     width: 260px;
+     min-height: 100%;
+     
+     margin: 0px;
+     position: fixed;
+     
+     text-align: right;
+     
+     //border: 1px solid black;
+     
+     .list {
+          background-color: #c6e2ff;
+          
+          float: right;
+          width: 200px;
+          padding-right: 1em;
+          padding-top: 0.2em;
+          padding-bottom: 0.2em;
+          //separate the three later
+          a:link, a:visited, a:hover {
+               text-decoration: none;
+          }
+     }
+}
+
+#settings {
+     //background-color: #c6e2ff;
+     //margin-left: 0px;
+     float: right;
+     font-weight: regular;
+     
+     font-family: 'Courier New', Courier, monospace;
+     font-size: 12px;
+     
+     width: auto;
+     text-align: right;
+     padding-top: 1em;
+     padding-right: 1em;
+     //position: fixed;
+     //border: 1px solid black;
+     
+     //separate the three later
+     a:link, a:visited, a:hover {
+          color: #c0c8e8;
+          text-decoration: none;
+     }
+}
