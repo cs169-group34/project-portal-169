@@ -1,0 +1,30 @@
+#sidebar {
+     background-color: #c6e2ff;
+     float: left;
+     font-family: Courier New;
+     font-size: 18px;
+     font-weight: bold;
+
+     width: 200px;
+     border-right: 1px solid #666;
+     min-height: 100%;
+     margin: auto;
+}
+
+#settings {
+     background-color: #c6e2ff;
+     margin-left: 0px;
+     float: right;
+     font-weight: regular;
+     text-align: center;
+     font-family: Courier New;
+     font-size: 12px;
+
+     a:link {
+          text-decoration: none;
+     }
+
+     #settings a:visited {
+          text-decoration: none;
+     }
+}
