@@ -1,12 +1,15 @@
-%h1 List of Student Teams
+=render :partial => 'common2/common2'
 
-%table#projects
-  %thead
-    %tr
-      %th Student Team Name
-      %th Student Team E-mail
-  %tbody
-    - @student_teams.each do |team|
+.content
+  %h1 List of Student Teams
+
+  %table#projects
+    %thead
       %tr
-        %td= team.name
-        %td= team.email
+        %th Student Team Name
+        %th Student Team E-mail
+    %tbody
+      - @student_teams.each do |team|
+        %tr
+          %td= team.name
+          %td= team.email

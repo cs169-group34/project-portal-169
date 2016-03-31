@@ -9,7 +9,5 @@
   - else
     =link_to("[Login]", login_path)
 %div#sidebar
-  %div#plist.list
-    =link_to("Project List", projects_path)
-  %div#slist.list
-    =link_to("Student List", student_teams_path)
+  =link_to("Project List", projects_path, :id => "plist", :class => 'panelbutton')
+  =link_to("Student List", student_teams_path, :id => "slist", :class => 'panelbutton')
