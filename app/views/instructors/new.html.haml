@@ -13,4 +13,4 @@
     %br
     = password_field :instructor, 'password', id: 'password'
     %p
-    = submit_tag 'Create New Account'
+    = submit_tag 'Create New Account', data: { disable_with: "Please wait..." }

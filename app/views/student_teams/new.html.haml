@@ -13,4 +13,4 @@
     %br
     = password_field :student_team, 'password', id: 'password'
     %p
-    = submit_tag 'Create New Team'
+    = submit_tag 'Create New Team', data: { disable_with: "Please wait..." }

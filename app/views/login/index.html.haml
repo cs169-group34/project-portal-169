@@ -9,4 +9,4 @@
     %br
     = password_field :login_form, 'password', id: 'password'
     %p
-    = submit_tag 'Login'
+    = submit_tag 'Login', data: { disable_with: "Please wait..." }
