@@ -1,0 +1,20 @@
+%h2 Edit Student Team
+
+= form_tag(student_team_path(@student_team), method: :put) do
+    = label :student_team, :github_link, 'GitHub Link:'
+    %br
+    = text_field :student_team, 'github_link'
+    %p
+    = label :student_team, :heroku_link, 'Heroku Link:'
+    %br
+    = text_field :student_team, 'heroku_link'
+    %p
+    = label :student_team, :codeclimate_link, 'CodeClimate Link:'
+    %br
+    = text_field :student_team, 'codeclimate_link'
+    %p
+    = label :student_team, :pivotal_link, 'PivotalTracker Link:'
+    %br
+    = text_field :student_team, 'pivotal_link'
+    %p
+    = submit_tag 'Update Project Information'
