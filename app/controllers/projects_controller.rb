@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
     
     def index
+      super
       @projects = Project.all
     end
     

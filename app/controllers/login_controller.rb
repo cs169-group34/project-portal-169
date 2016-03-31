@@ -1,9 +1,5 @@
 class LoginController < ApplicationController
   
-  def index
-    
-  end
-  
   def login
     email = params[:login_form][:email]
     password = params[:login_form][:password]

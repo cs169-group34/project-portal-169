@@ -1,6 +1,7 @@
 class StudentTeamsController < ApplicationController
         
     def index
+      super
       @student_teams = StudentTeam.all
     end
     
