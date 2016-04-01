@@ -117,18 +117,20 @@ Given /the following (.*?) exist:$/ do |type, table|
   table.hashes.map do |element|
     case type
       when "projects"
-        p = Project.create(
+        pro = Project.create(
           title: element[:title],
           content: element[:content],
         )
-        p.studentteam << StudentTeam.find_by_name(element[:student_team])
+        pro.student_team = StudentTeam.find_by_name(element[:student_team])
+        pro.save
       when "instructors"
         i = Instructor.create(
           name: element[:name],
           email: element[:email],
           password: "default_password"
         )
-        i.studentteam = StudentTeam.find_by_name(team_name)
+        i.student_teams << StudentTeam.find_by_name(element[:team_name])
+        i.save
       when "student teams"
         s = StudentTeam.create(
           name: element[:name], 
@@ -136,6 +138,7 @@ Given /the following (.*?) exist:$/ do |type, table|
           password: "default_password"
         )
         s.instructor = Instructors.find_by_name(element[:gsi])
+        s.save
     end
   end
 end

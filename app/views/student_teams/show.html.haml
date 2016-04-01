@@ -1,6 +1,18 @@
 = "Name: #{@student_team.name}"
 %br
-="Email: #{@student_team.email}" 
+= "Email: #{@student_team.email}" 
+%br
+= "GSI: #{@gsi.name}"
+%br
+= "GSI Email: #{@gsi.email}" 
+%br
+= "Project: #{@project.title}"
+%br
+= "Project Content:" 
+%br
+= "#{@project.content}"
+
+
 %h2 Iterations
 - @iterations.each do |iteration|
   .iteration

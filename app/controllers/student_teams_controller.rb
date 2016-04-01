@@ -19,6 +19,8 @@ class StudentTeamsController < ApplicationController
       if access_profile_page?(params[:id].to_i)
          @student_team = StudentTeam.find(params[:id])
          @iterations = @student_team.iterations
+         @gsi = @student_team.instructor || Instructor.new(name: "Unassigned", email: "Unassigned")
+         @project = @student_team.project || Project.new(title: "Unassigned", content: "Unassigned")
       else
         return render body: "You shouldn't be looking at this page."
       end
@@ -47,6 +49,22 @@ class StudentTeamsController < ApplicationController
     
     def student_team_params
       params.require(:student_team).permit(:name, :email, :password) 
+    end
+    
+    #--------------------------------------------------------------------------
+    # * Iteration Creation
+    #--------------------------------------------------------------------------
+    
+    def iteration_params
+      params.require(:iteration).permit(:iteration, :user_stories, :comments)
+    end
+    
+    def get_next_iteration
+      next_iteration = 1
+      @student_team.iterations.each { |iteration|
+        next_iteration = iteration + 1 if iteration >= next_iteration
+      }
+      return next_iteration
     end
     
     #--------------------------------------------------------------------------
