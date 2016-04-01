@@ -5,12 +5,12 @@ Feature: GSI sees Student Team Profiles
     
 Background:
     Given I have a gsi named "Best GSI"
-    Given the following students exist:
+    Given the following student_teams exist:
     | name  | email          | gsi      | 
     | team1 | team1@team.edu | Best GSI |
     | team2 | team2@team.edu | Best GSI |
     And I am logged in as my gsi
-    
+
 Scenario: 
     Given I am on the profile page for the GSI with name: "Best GSI"
     When I follow "team1"

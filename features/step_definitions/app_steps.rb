@@ -131,13 +131,13 @@ Given /the following (.*?) exist:$/ do |type, table|
         )
         i.student_teams << StudentTeam.find_by_name(element[:team_name])
         i.save
-      when "student teams"
+      when "student_teams"
         s = StudentTeam.create(
           name: element[:name], 
           email: element[:email],
           password: "default_password"
         )
-        s.instructor = Instructors.find_by_name(element[:gsi])
+        s.instructor = Instructor.find_by_name(element[:gsi])
         s.save
     end
   end
