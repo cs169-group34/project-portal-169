@@ -30,7 +30,7 @@ Scenario: Assign project to student team on project details page
     
 Scenario: Assign student team to project on student team details page
     When I am on the profile page for the student team: "team1"
-    Then I should see "Project: Unassigned"
+    Then I should see "Project name: Unassigned"
     And I should not see "Sample Project 1"
     When I fill in "assign to project" with "Sample Project 1"
     Then I press "Assign"
