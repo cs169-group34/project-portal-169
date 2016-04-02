@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'comments/index'
+
   get "logout" => "logout#index"
 
   get "login" => "login#index"
   post "login" => "login#login"
+  
+  get "comments" => "comments#index"
 
   resources :projects
   resources :instructors
@@ -14,6 +18,7 @@ Rails.application.routes.draw do
   get "/student_teams/:id/submit_story/" => "student_teams#new_story"
   post "/student_teams/:id/submit_story/" => "student_teams#create_story"
   post "/student_teams/:id/assign/" => "student_teams#assign"
+  post "/student_teams/:id/add_gsi_comments/:iter_id/" => "student_teams#add_gsi_comments"
   post "/projects/:id/assign/" => "projects#assign"
   
   # The priority is based upon order of creation: first created -> highest priority.

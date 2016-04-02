@@ -85,6 +85,14 @@ end
 # * GSI Steps
 #------------------------------------------------------------------------------
 
+When /^(?:|I )input my comment: "(.*)"$/ do |comment|
+  fill_in("comments", with: comment)
+end
+
+When /^(?:|I )input my grade: "(.*)"$/ do |grade|
+  fill_in("grades", with: grade)
+end
+
 Given /^I have a gsi named "(.*)"$/ do |gsi_name|
   @gsi = Instructor.create(name: gsi_name, 
       email: "default_email", password: "default_password")
@@ -129,6 +137,42 @@ When /^(?:|I )input my project content: "(.*)"$/ do |project_content|
 end
 
 #------------------------------------------------------------------------------
+# * Creation Steps (for batch creating objects)
+#------------------------------------------------------------------------------
+
+Given /the following (projects|instructors|student_teams) exist:$/ do |type, table|
+  table.hashes.map do |element|
+    case type
+      when "projects"
+        pro = Project.create(
+          title: element[:title],
+          content: element[:content],
+        )
+        pro.student_team = StudentTeam.find_by_name(element[:student_team])
+        pro.save
+      when "instructors"
+        i = Instructor.create(
+          name: element[:name],
+          email: element[:email],
+          password: "default_password"
+        )
+        st = StudentTeam.find_by_name(element[:team_name]) || []
+        i.student_teams << st
+        i.save
+      when "student_teams"
+        s = StudentTeam.create(
+          name: element[:name], 
+          email: element[:email],
+          password: "default_password"
+        )
+        s.instructor = Instructor.find_by_name(element[:gsi])
+        s.save
+    end
+  end
+end
+
+
+#------------------------------------------------------------------------------
 # * Iteration Steps
 #------------------------------------------------------------------------------
 
@@ -159,39 +203,4 @@ end
 
 When /^I input my iteration comment: "(.*)"$/ do |comment|
   fill_in("iteration_comments", with: comment)
-end
-
-#------------------------------------------------------------------------------
-# * Creation Steps (for batch creating objects)
-#------------------------------------------------------------------------------
-
-Given /the following (.*?) exist:$/ do |type, table|
-  table.hashes.map do |element|
-    case type
-      when "projects"
-        pro = Project.create(
-          title: element[:title],
-          content: element[:content],
-        )
-        pro.student_team = StudentTeam.find_by_name(element[:student_team])
-        pro.save
-      when "instructors"
-        i = Instructor.create(
-          name: element[:name],
-          email: element[:email],
-          password: "default_password"
-        )
-        st = StudentTeam.find_by_name(element[:team_name]) || []
-        i.student_teams << st
-        i.save
-      when "student_teams"
-        s = StudentTeam.create(
-          name: element[:name], 
-          email: element[:email],
-          password: "default_password"
-        )
-        s.instructor = Instructor.find_by_name(element[:gsi])
-        s.save
-    end
-  end
 end

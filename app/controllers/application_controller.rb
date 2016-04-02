@@ -22,4 +22,12 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def logged_in_as_student
+    return session[:user_type] == 1
+  end
+  
+  def logged_in_as_instructor
+    return session[:user_type] == 2
+  end
+  
 end

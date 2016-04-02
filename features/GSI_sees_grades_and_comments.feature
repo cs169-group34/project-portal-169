@@ -4,7 +4,9 @@ Feature: GSI sees Grades and Comments
     I want to see links to all of the comments and grades I entered for each team (can also be on team profile page)
 
 Background: on home page
-    Given I am on the home page
+    Given I have a gsi named "ANDYCHEN"
+    And I am logged in as my gsi
+    And I am on the home page
     
 Scenario:
     When I follow "Comment List"

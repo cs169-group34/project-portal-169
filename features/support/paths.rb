@@ -37,6 +37,8 @@ module NavigationHelpers
       '/student_teams'
     when /^the iteration submission page for the student team: "(.*)"$/
       "/student_teams/#{StudentTeam.find_by(name: $1).id}/submit_story"
+    when /^the comment list page$/
+      '/comments'
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

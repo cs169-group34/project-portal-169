@@ -78,6 +78,21 @@ class StudentTeamsController < ApplicationController
       return redirect_to(student_team_path(@student_team))
     end
     
+    def add_gsi_comments
+      student_team = StudentTeam.find(params[:id])
+      iteration = student_team.iterations.find(params[:iter_id])
+      if params[:grades_and_comments][:grades]
+        iteration.instructor_grades = params[:grades_and_comments][:grades]
+      end
+      if params[:grades_and_comments][:private]
+        iteration.private_comments = params[:grades_and_comments][:comments]
+      else
+        iteration.instructor_comments = params[:grades_and_comments][:comments]
+      end
+      iteration.save!
+      return redirect_to(student_team_path(student_team))
+    end
+    
     private
     
     #--------------------------------------------------------------------------
@@ -123,15 +138,7 @@ class StudentTeamsController < ApplicationController
     #--------------------------------------------------------------------------
     # * Permissions
     #--------------------------------------------------------------------------
-    
-    def logged_in_as_student
-      return session[:user_type] == 1
-    end
-    
-    def logged_in_as_instructor
-      return session[:user_type] == 2
-    end
-    
+
     def access_profile_page?(id)
       return true if logged_in_as_instructor 
       return can_edit_profile_page?(id)

@@ -42,14 +42,39 @@
     %strong Comments:
     %br
     =iteration.comments
-    
+    %p
+    %strong= "Grade: #{iteration.instructor_grades}/100"
+    %p
+    %strong Instructor Comments:
+    %br
+    =iteration.instructor_comments
+    - if @is_instructor
+      %p
+      %strong Private Comments:
+      %br
+      =iteration.private_comments
+      %p
+      = form_tag "/student_teams/#{@student_team.id}/add_gsi_comments/#{iteration.id}/" do
+        = label :grades_and_comments, :grades, 'Grade to Assign:'
+        %br
+        = number_field :grades_and_comments, 'grades', id: 'grades'
+        %p
+        = label :grades_and_comments, :comments, 'Comments:'
+        %br
+        = text_area :grades_and_comments, 'comments', id: 'comments'
+        %p
+        = label :grades_and_comments, :private, 'Private:'
+        = check_box :grades_and_comments, 'private', id: 'Private'
+        %p
+        = submit_tag 'Submit', id: 'submit grades and comments', data: { disable_with: "Please wait..." }
+%p
 - if @is_instructor
   = form_tag "/student_teams/#{@student_team.id}/assign" do
     = label :assign, :project, 'Project to assign:'
     %br
     = text_field :assign, 'project', id: 'assign to project'
     %p
-    = label :assign, :instructor, 'Project to assign:'
+    = label :assign, :instructor, 'Instructor to assign:'
     %br
     = text_field :assign, 'instructor', id: 'assign to instructor'
     %p
