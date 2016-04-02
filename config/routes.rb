@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   
   get "/student_teams/:id/submit_story/" => "student_teams#new_story"
   post "/student_teams/:id/submit_story/" => "student_teams#create_story"
+  post "/student_teams/:id/assign/" => "student_teams#assign"
+  post "/projects/:id/assign/" => "projects#assign"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

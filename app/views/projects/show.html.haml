@@ -1,3 +1,15 @@
 = "Title: #{@project.title}"
 %br
+= "Student Team Assigned to: #{@student_team.name}"
+%br
 ="Content: #{@project.content}" 
+%br
+
+%br
+- if @is_instructor
+  = form_tag "/projects/#{@project.id}/assign" do
+    = label :assign, :student_team, 'Student Team to assign:'
+    %br
+    = text_field :assign, 'student_team', id: 'assign to student_team'
+    %p
+    = submit_tag 'Assign', id: 'Assign'

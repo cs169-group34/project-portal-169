@@ -15,6 +15,7 @@ class InstructorsController < ApplicationController
     
     def show
        @instructor = Instructor.find(params[:id]) 
+       @student_teams = @instructor.student_teams
     end
     
     private
