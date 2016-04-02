@@ -129,7 +129,8 @@ Given /the following (.*?) exist:$/ do |type, table|
           email: element[:email],
           password: "default_password"
         )
-        i.student_teams << StudentTeam.find_by_name(element[:team_name])
+        st = StudentTeam.find_by_name(element[:team_name]) || []
+        i.student_teams << st
         i.save
       when "student_teams"
         s = StudentTeam.create(

@@ -21,6 +21,7 @@ class StudentTeamsController < ApplicationController
          @iterations = @student_team.iterations
          @gsi = @student_team.instructor || Instructor.new(name: "Unassigned", email: "Unassigned")
          @project = @student_team.project || Project.new(title: "Unassigned", content: "Unassigned")
+         @is_instructor = logged_in_as_instructor
       else
         return render body: "You shouldn't be looking at this page."
       end
@@ -38,6 +39,20 @@ class StudentTeamsController < ApplicationController
       @student_team = StudentTeam.find(session[:user_id])
       params[:iteration][:iteration] = get_next_iteration
       @student_team.iterations.create(iteration_params)
+      return redirect_to(student_team_path(@student_team))
+    end
+    
+    def assign
+      @student_team = StudentTeam.find(params[:id])
+      project_title = params[:assign][:project]
+      if project_title
+        @student_team.project = Project.find_by_title(project_title) || @student_team.project
+      end
+      instructor_name = params[:assign][:instructor]
+      if instructor_name
+        @student_team.instructor = Instructor.find_by_name(instructor_name) || @student_team.instructor
+      end
+      @student_team.save!
       return redirect_to(student_team_path(@student_team))
     end
     

@@ -8,8 +8,8 @@ Background:
     Given the following instructors exist:
     | name | email        | team_name     |
     | GSI1 | GSI1@GSI.edu | Lazy Students |
-    | GSI2 | GSI1@GSI.edu | Lazy Students |
-    Given the following students exist:
+    | GSI2 | GSI2@GSI.edu | Lazy Students |
+    Given the following student_teams exist:
     | name  | email          | gsi  | 
     | team1 | team1@team.edu | GSI2 |
     Given the following projects exist:
@@ -19,8 +19,10 @@ Background:
     
 Scenario: Assign project to student team on project details page
     When I am on the project details page for project with name: "Sample Project 1"
-    When I fill in "assign to team" with "team1"
-    Then I follow "assign to team button"
+    Then I should see "Student Team Assigned to: Unassigned"
+    And I should not see "Student Team Assigned to: team1"
+    When I fill in "assign to student_team" with "team1"
+    Then I press "Assign"
     Then I should be on the project details page for project with name: "Sample Project 1"
     And I should see "team1"
     When I am on the profile page for the student team: "team1"
@@ -28,8 +30,10 @@ Scenario: Assign project to student team on project details page
     
 Scenario: Assign student team to project on student team details page
     When I am on the profile page for the student team: "team1"
+    Then I should see "Project: Unassigned"
+    And I should not see "Sample Project 1"
     When I fill in "assign to project" with "Sample Project 1"
-    Then I follow "assign to project button"
+    Then I press "Assign"
     Then I should be on the profile page for the student team: "team1"
-    When I am on the project details page for project with name: "Sample Project 1"
-    Then I should see "team1"
+    And I should see "Sample Project 1"
+    And I should not see "Project: Unassigned"
