@@ -5,10 +5,6 @@ class StudentTeamsController < ApplicationController
       @student_teams = StudentTeam.all
     end
     
-    def new
-          
-    end
-    
     def create
       @student_team = StudentTeam.create(student_team_params)
       session[:user_type] = 1
@@ -50,11 +46,7 @@ class StudentTeamsController < ApplicationController
     end
     
     def new_story
-      if can_edit_profile_page?(params[:id].to_i)
-        @student_team = StudentTeam.find(params[:id])
-      else
-        return render body: "You shouldn't be looking at this page."
-      end
+      edit
     end
     
     def create_story
@@ -101,22 +93,6 @@ class StudentTeamsController < ApplicationController
     
     def student_team_params
       params.require(:student_team).permit(:name, :email, :password) 
-    end
-    
-    #--------------------------------------------------------------------------
-    # * Iteration Creation
-    #--------------------------------------------------------------------------
-    
-    def iteration_params
-      params.require(:iteration).permit(:iteration, :user_stories, :comments)
-    end
-    
-    def get_next_iteration
-      next_iteration = 1
-      @student_team.iterations.each { |iteration|
-        next_iteration = iteration + 1 if iteration >= next_iteration
-      }
-      return next_iteration
     end
     
     #--------------------------------------------------------------------------
