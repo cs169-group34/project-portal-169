@@ -1,4 +1,4 @@
-class StudentTeamsController < ApplicationController
+class StudentTeamsController < UserController
         
     def index
       super
@@ -6,7 +6,7 @@ class StudentTeamsController < ApplicationController
     end
     
     def create
-      return if reject_existing_user(params[:instructor][:name])
+      return if reject_existing_user(params[:student_team][:name])
       @student_team = StudentTeam.create(student_team_params)
       session[:user_type] = 1
       session[:user_id] = @student_team.id
