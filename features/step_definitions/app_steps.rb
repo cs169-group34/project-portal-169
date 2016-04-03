@@ -93,6 +93,10 @@ When /^(?:|I )input my grade: "(.*)"$/ do |grade|
   fill_in("grades", with: grade)
 end
 
+When /^(?:|I )input the secret password$/ do
+  fill_in("secretpass", with: Rails.configuration.x.gsi_secretpass)
+end
+
 Given /^I have a gsi named "(.*)"$/ do |gsi_name|
   @gsi = Instructor.create(name: gsi_name, 
       email: "default_email", password: "default_password")
