@@ -31,5 +31,20 @@ module ProjectPortal
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    
+    #--------------------------------------------------------------------------
+    # * General Configuration
+    #--------------------------------------------------------------------------
+    
+    #--------------------------------------------------------------------------
+    # * GSI Creation
+    #--------------------------------------------------------------------------
+    
+    # The secret password that must be entered for a GSI to create an account
+    config.x.gsi_secretpass = "thisisapen" 
+    
+    # The message that flashes on the screen when a GSI enters the wrong secret password
+    config.x.gsi_secretpass_incorrect = "Error: GSI creation password field was incorrect."
+    
   end
 end

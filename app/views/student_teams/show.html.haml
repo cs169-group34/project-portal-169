@@ -78,4 +78,4 @@
     %br
     = text_field :assign, 'instructor', id: 'assign to instructor'
     %p
-    = submit_tag 'Assign', id: 'Assign'
+    = submit_tag 'Assign', id: 'Assign', data: { disable_with: "Please wait..." }
