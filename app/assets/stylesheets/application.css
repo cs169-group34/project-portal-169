@@ -38,6 +38,8 @@ body {
      background-color: #ffffff;*/
 }
 
+/* works sometimes? mostly doesn't work
+https://gist.github.com/anotheruiguy/7379570 - for reference
 @font-face {
      font-family: 'magic';
      src: url('https://mplus-fonts.osdn.jp/webfonts/basic_latin/mplus-1p-thin-sub.eot');
@@ -45,3 +47,4 @@ body {
           url('https://mplus-fonts.osdn.jp/webfonts/basic_latin/mplus-1p-thin-sub.woff') format('woff'),
           url('https://mplus-fonts.osdn.jp/webfonts/basic_latin/mplus-1p-thin-sub.ttf') format('truetype');
 }
+*/

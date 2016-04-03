@@ -19,19 +19,23 @@ read margin collapsing later, use absolute position for now*/
 #sidebar {
      background-color: #3e4146;
      
-     font-family: magic, 'Courier New', monospace;
+     font-family: 'magic', 'Courier New', monospace;
      font-size: 24px;
 
-     width: 260px;
+     width: 220px;
      min-height: 100%;
      
      margin: 0px;
      position: fixed;
      
      text-align: right;
-     padding-top: 40px;
+     //padding-top: 40px;
      //border: 1px solid black;
      
+     box-shadow: 1px 0px 0px #999999;
+     -webkit-box-shadow: 1px 0px 0px #999999;
+     -moz-box-shadow: 1px 0px 0px #999999;
+          
      //testing out with some pretty eye-cancer colors for now, change later
      .panelbutton {
           background-color: #ffffff;
@@ -76,6 +80,10 @@ read margin collapsing later, use absolute position for now*/
           background: -ms-linear-gradient(top, #c6e2ff, #bada55);
           background: linear-gradient(top, #c6e2ff, #bada55);
      }
+     
+     #logo {
+          margin: 10px;
+     }
 }
 
 #settings {
@@ -99,4 +107,12 @@ read margin collapsing later, use absolute position for now*/
           color: #c0c8e8;
           text-decoration: none;
      }
+}
+
+.content {
+     position: absolute;
+     top: 40px;
+     left: 220px;
+     margin-left: 1px;
+     //border: 1px solid black;
 }

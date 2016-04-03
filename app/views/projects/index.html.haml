@@ -1,17 +1,19 @@
 =render :partial => 'common2/common2'
 
+
 .content
   %h1 List of Projects
 
   =link_to("Add Project", new_project_path)
 
-  %table#projects
-    %thead
-      %tr
-        %th Project Name
-        %th Project Content
-    %tbody
-      - @projects.each do |project|
-        %tr
-          %td= project.title
-          %td= project.content
+  %ul
+    - @projects.each do |project|
+      %li
+        =image_tag(asset_path("project_no_image.png"))
+        %h2= project.title
+        %p= project.content
+      - if project != @projects.last
+        <hr/>
+        
+/
+  things to do: project view filter; coloring based on project status; load project thumbnail if exists
