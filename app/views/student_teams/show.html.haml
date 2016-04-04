@@ -45,12 +45,11 @@
     %p
     - if iteration.instructor_grades
       %strong= "Grade: #{iteration.instructor_grades}/100"
-    - else
-      %strong= "Grade: Unassigned"
     %p
-    %strong Instructor Comments:
-    %br
-    =iteration.instructor_comments
+    - if iteration.instructor_comments
+      %strong Instructor Comments:
+      %br
+      =iteration.instructor_comments
     - if @is_instructor
       %p
       %strong Private Comments:
