@@ -43,7 +43,10 @@
     %br
     =iteration.comments
     %p
-    %strong= "Grade: #{iteration.instructor_grades}/100"
+    - if iteration.instructor_grades
+      %strong= "Grade: #{iteration.instructor_grades}/100"
+    - else
+      %strong= "Grade: Unassigned"
     %p
     %strong Instructor Comments:
     %br
@@ -67,6 +70,9 @@
         = check_box :grades_and_comments, 'private', id: 'Private'
         %p
         = submit_tag 'Submit', id: 'submit grades and comments', data: { disable_with: "Please wait..." }
+    - else
+      %p
+      = link_to("Submit Iteration", "/student_teams/#{@student_team.id}/submit_story")
 %p
 - if @is_instructor
   = form_tag "/student_teams/#{@student_team.id}/assign" do

@@ -107,7 +107,7 @@ class StudentTeamsController < UserController
     def get_next_iteration
       next_iteration = 1
       @student_team.iterations.each { |iteration|
-        next_iteration = iteration + 1 if iteration >= next_iteration
+        next_iteration = iteration.iteration + 1 if iteration.iteration >= next_iteration
       }
       return next_iteration
     end
