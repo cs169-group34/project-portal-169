@@ -3,14 +3,14 @@
 = form_tag student_teams_path do
     = label :student_team, :name, 'Team Name:'
     %br
-    = text_field :student_team, 'name', id: 'team-name'
+    = text_field :student_team, 'name', id: 'team-name', required: true
     %p
     = label :student_team, :email, 'E-mail Address:'
     %br
-    = text_field :student_team, 'email', id: 'email'
+    = text_field :student_team, 'email', id: 'email', required: true
     %p
     = label :student_team, :password, 'Password: '
     %br
-    = password_field :student_team, 'password', id: 'password'
+    = password_field :student_team, 'password', id: 'password', required: true
     %p
     = submit_tag 'Create New Team', data: { disable_with: "Please wait..." }

@@ -43,11 +43,13 @@
     %br
     =iteration.comments
     %p
-    %strong= "Grade: #{iteration.instructor_grades}/100"
+    - if iteration.instructor_grades
+      %strong= "Grade: #{iteration.instructor_grades}/100"
     %p
-    %strong Instructor Comments:
-    %br
-    =iteration.instructor_comments
+    - if iteration.instructor_comments
+      %strong Instructor Comments:
+      %br
+      =iteration.instructor_comments
     - if @is_instructor
       %p
       %strong Private Comments:
@@ -67,6 +69,9 @@
         = check_box :grades_and_comments, 'private', id: 'Private'
         %p
         = submit_tag 'Submit', id: 'submit grades and comments', data: { disable_with: "Please wait..." }
+    - else
+      %p
+      = link_to("Submit Iteration", "/student_teams/#{@student_team.id}/submit_story")
 %p
 - if @is_instructor
   = form_tag "/student_teams/#{@student_team.id}/assign" do
@@ -78,4 +83,4 @@
     %br
     = text_field :assign, 'instructor', id: 'assign to instructor'
     %p
-    = submit_tag 'Assign', id: 'Assign'
+    = submit_tag 'Assign', id: 'Assign', data: { disable_with: "Please wait..." }

@@ -2,10 +2,13 @@
 
 [ProjectPortal](http://cs169-projectportal.herokuapp.com/), a portal for CS 169 Projects. Created by Group34 of CS169, Spring 2016.
 
+## Configuration
+
+Configuration details for this project can be found in config/application.rb
+
 ## Badges and Links
 
 [![Build Status](https://travis-ci.org/cs169-group34/project-portal-169.svg?branch=master)](https://travis-ci.org/cs169-group34/project-portal-169)
-
 
 [![Code Climate](https://codeclimate.com/github/cs169-group34/project-portal-169/badges/gpa.svg)](https://codeclimate.com/github/cs169-group34/project-portal-169)
 [![Test Coverage](https://codeclimate.com/github/cs169-group34/project-portal-169/badges/coverage.svg)](https://codeclimate.com/github/cs169-group34/project-portal-169/coverage)

@@ -16,16 +16,16 @@
 
 html {
      /*viewport*/
-     margin: 0px;
-     padding: 0px;
+     margin: 0;
+     padding: 0;
 	height: 100%;
 	
 	/*border: 1px solid green;*/
 }
 
 body {
-     margin: 0px;
-     padding: 0px;
+     margin: 0;
+     padding: 0;
 	min-height: 100%;
 	
 	/*minimum width of browser window size
