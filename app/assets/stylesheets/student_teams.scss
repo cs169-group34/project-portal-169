@@ -1,3 +1,16 @@
 // Place all the styles related to the student_teams controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+tr:nth-of-type(odd) {
+  background-color: rgba(200, 230, 250, 1.0);
+}
+
+th, td {
+    border: none;
+}
+
+table {
+    border: none;
+    border-collapse: collapse;
+}
