@@ -32,9 +32,9 @@ read margin collapsing later, use absolute position for now*/
      //padding-top: 40px;
      //border: 1px solid black;
      
-     box-shadow: 1px 0px 0px #999999;
-     -webkit-box-shadow: 1px 0px 0px #999999;
-     -moz-box-shadow: 1px 0px 0px #999999;
+     box-shadow: 1px 0px 0px #909090;
+     -webkit-box-shadow: 1px 0px 0px #909090;
+     -moz-box-shadow: 1px 0px 0px #909090;
           
      //testing out with some pretty eye-cancer colors for now, change later
      .panelbutton {
@@ -114,5 +114,6 @@ read margin collapsing later, use absolute position for now*/
      top: 40px;
      left: 220px;
      margin-left: 1px;
+     right: 0px;
      //border: 1px solid black;
 }
