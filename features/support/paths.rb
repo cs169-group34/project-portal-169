@@ -39,6 +39,13 @@ module NavigationHelpers
       "/student_teams/#{StudentTeam.find_by(name: $1).id}/submit_story"
     when /^the comment list page$/
       '/comments'
+      
+    when /^the profile page for the customer: "(.*)"$/
+      customer_path(Customer.find_by(name: $1))
+    when /^the customer registration page$/
+      '/customers/new'
+    when /^the edit page for project: "(.*)"$/
+      'projects/#{Project.find_by(name: $1).id}/edit'
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

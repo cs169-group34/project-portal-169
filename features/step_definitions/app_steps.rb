@@ -140,6 +140,37 @@ When /^(?:|I )input my project content: "(.*)"$/ do |project_content|
   fill_in("project-content", with: project_content)
 end
 
+When /^(?:|I )input my customer name: "(.*)"$/ do |name|
+  fill_in("customer_name", with: name)
+end
+
+When /^(?:|I )input my login email: "(.*)"$/ do |email|
+  fill_in("login-email", with: email)
+end
+
+When /^(?:|I )input my login password: "(.*)"$/ do |password|
+  fill_in("login-password", with: password)
+end
+
+Given /^I have a customer named "(.*)"$/ do |customer_name|
+  @customer = Customer.create(name: customer_name, 
+      email: "default_email", password: "default_password")
+end
+
+Given /^I am logged in as my customer/ do
+  visit("/login")
+  fill_in("email", with: @customer.email)
+  fill_in("password", with: @customer.password)
+  click_button("Login")
+end
+
+Given /^I pair customer "(.*)" with project "(.*)"$/ do |customer_name, project_name|
+  customer = Customer.find_by_name(customer_name)
+  project = Project.find_by_name(project_name)
+  customer.project = project
+  customer.save
+  project.save
+
 #------------------------------------------------------------------------------
 # * Creation Steps (for batch creating objects)
 #------------------------------------------------------------------------------
