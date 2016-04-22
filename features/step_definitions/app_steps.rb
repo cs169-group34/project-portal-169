@@ -170,6 +170,7 @@ Given /^I pair customer "(.*)" with project "(.*)"$/ do |customer_name, project_
   customer.project = project
   customer.save
   project.save
+end
 
 #------------------------------------------------------------------------------
 # * Creation Steps (for batch creating objects)
