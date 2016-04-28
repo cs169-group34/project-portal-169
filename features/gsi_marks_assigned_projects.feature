@@ -25,6 +25,11 @@ Scenario: Assign project to student team on project details page
     Then I should be on the project details page for project with name: "Sample Project 1"
     And I should see "Status: Assigned"
     
+    When I fill in "assign to student_team" with "Unassigned"
+    And I press "Assign"
+    Then I should be on the project details page for project with name: "Sample Project 1"
+    And I should see "Status: Unassigned"
+    
 Scenario: Assign student team to project on student team details page
     When I am on the project details page for project with name: "Sample Project 1"
     Then I should see "Status: Unassigned"
@@ -34,3 +39,10 @@ Scenario: Assign student team to project on student team details page
     Then I should be on the profile page for the student team: "team1"
     When I am on the project details page for project with name: "Sample Project 1"
     Then I should see "Status: Assigned"
+    
+    When I am on the profile page for the student team: "team1"
+    Then I fill in "assign to project" with "Unassigned"
+    And I press "Assign"
+    Then I should be on the profile page for the student team: "team1"
+    When I am on the project details page for project with name: "Sample Project 1"
+    Then I should see "Status: Unassigned"

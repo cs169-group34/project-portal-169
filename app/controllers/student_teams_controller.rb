@@ -60,8 +60,14 @@ class StudentTeamsController < UserController
     def assign
       @student_team = StudentTeam.find(params[:id])
       project_title = params[:assign][:project]
-      if project_title
+      if project_title == "Unassigned" and @student_team.project != nil
+        @student_team.project.assigned = false
+        @student_team.project.save!
+        @student_team.project = nil
+      elsif project_title
         @student_team.project = Project.find_by_title(project_title) || @student_team.project
+        @student_team.project.assigned = true
+        @student_team.project.save!
       end
       instructor_name = params[:assign][:instructor]
       if instructor_name
