@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
         StudentTeam.find(session[:user_id])
       when 2
         Instructor.find(session[:user_id])
-      when 3
+      when 4
         Customer.find(session[:user_id])
       else
         nil
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
   
   def logged_in_as_customer
-    return session[:user_type] == 3
+    return session[:user_type] == 4
   end
   
 end

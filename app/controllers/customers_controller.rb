@@ -34,7 +34,7 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @customer.save
         session[:user_id] = @customer.id
-        session[:user_type] = 3
+        session[:user_type] = 4
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render :show, status: :created, location: @customer }
       else

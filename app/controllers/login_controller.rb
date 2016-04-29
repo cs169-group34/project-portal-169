@@ -34,7 +34,7 @@ class LoginController < ApplicationController
   end
   
   def login_as_customer(customer)
-    session[:user_type] = 3
+    session[:user_type] = 4
     session[:user_id] = customer.id
   end
   

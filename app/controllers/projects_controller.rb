@@ -6,7 +6,19 @@ class ProjectsController < ApplicationController
     end
     
     def edit
-      
+      if has_edit_permission?
+        @project = Project.find(params[:id])
+      else
+        return render body: "You shouldn't be looking at this page."
+      end
+    end
+    
+    def update
+      @project = Project.find(params[:id])
+      @project.title = project_params[:title]
+      @project.content = project_params[:content]
+      @project.save!
+      redirect_to(project_path(@project))\
     end
     
     def create
@@ -22,11 +34,15 @@ class ProjectsController < ApplicationController
     end
     
     def show
-      @project = Project.find(params[:id])
-      @customer = @project.customer
-      @student_team = @project.student_team || StudentTeam.new(name: "Unassigned")
-      @is_instructor = logged_in_as_instructor
-      @is_assigned_msg = "Status: " + if @project.assigned then 'Assigned' else 'Unassigned' end
+      @project = Project.find_by_id(params[:id])
+      if @project != nil
+        @customer = @project.customer || Customer.new(name: "Undefined")
+        @student_team = @project.student_team || StudentTeam.new(name: "Unassigned")
+        @is_instructor = logged_in_as_instructor
+        @is_assigned_msg = "Status: " + if @project.assigned then 'Assigned' else 'Unassigned' end
+      else
+        return render body: "You shouldn't be looking at this page."
+      end
     end
     
     def assign
@@ -41,7 +57,6 @@ class ProjectsController < ApplicationController
         st = @project.student_team
         st.project= nil
         st.save!
-        # @project.student_team = nil
         @project.assigned = false
       end
       @project.save!
@@ -65,4 +80,39 @@ class ProjectsController < ApplicationController
     def logged_in_as_instructor
       return session[:user_type] == 2
     end
+    
+    def can_edit_project?
+      return true if logged_in_as_instructor
+      project = Project.find(project_params[:id])
+      if project == nil
+        return false
+      end
+      if project.customer == nil
+        return false
+      end
+      if project.customer.email != customer_params[:email]
+        return false
+      end
+      if project.customer.password != customer_params[:password]
+        return false
+      end
+      return true
+    end
+    
+    def has_edit_permission?
+      return true if logged_in_as_instructor
+      project = Project.find(params[:id])
+      return false if project == nil
+      customer = project.customer
+      return false if customer == nil
+      return true if logged_in_as_customer(customer)
+      return false
+    end
+    
+    def logged_in_as_customer(customer)
+      return false if session[:user_type] != 4
+      return false if session[:user_id] != customer.id
+      return true
+    end
+  
 end

@@ -8,7 +8,9 @@
 %br
 = "Content: #{@project.content}" 
 %br
-= "Is Assigned: #{@is_assigned_msg}"
+= "#{@is_assigned_msg}"
+%p
+=link_to("Edit Project", edit_project_path(@project))
 %br
 
 %br

@@ -1,6 +1,6 @@
 %h2 Edit Student Team
 
-= form_tag(student_team_path(@student_team), method: :put) do
+= form_tag student_team_path(@student_team), method: :put do
     = label :student_team, :github_link, 'GitHub Link:'
     %br
     = text_field :student_team, 'github_link'

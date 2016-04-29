@@ -64,10 +64,12 @@ class StudentTeamsController < UserController
         @student_team.project.assigned = false
         @student_team.project.save!
         @student_team.project = nil
-      elsif project_title
+      else
         @student_team.project = Project.find_by_title(project_title) || @student_team.project
-        @student_team.project.assigned = true
-        @student_team.project.save!
+        if @student_team.project != nil
+          @student_team.project.assigned = true
+          @student_team.project.save!
+        end
       end
       instructor_name = params[:assign][:instructor]
       if instructor_name

@@ -15,6 +15,7 @@
     <% @projects.each do |project| %>
       <tr>
         <%= link_to project.title, "/projects/#{project.id}" %>
+        <br>
       </tr>
     <% end %>
 </table>
