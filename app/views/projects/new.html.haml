@@ -1,12 +1,20 @@
 %h2 New Project
 
 = form_tag projects_path do
+    = label :customer, :email, 'Submitter email'
+    %br
+    = text_field :customer, 'email', id: 'customer-email', required: true
+    %p
+    = label :customer, :password, 'Submitter password'
+    %br
+    = password_field :customer, 'password', id: 'customer-password', required: true
+    %p
     = label :project, :title, 'Title'
     %br
     = text_field :project, 'title', id: 'project-title', required: true
-    %br
+    %p
     = label :project, :content, 'Content'
     %br
     = text_area :project, 'content', id: 'project-content', required: true
-    %br
+    %p
     = submit_tag 'Submit Project', data: { disable_with: "Please wait..." }

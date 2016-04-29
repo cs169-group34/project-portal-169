@@ -140,16 +140,12 @@ When /^(?:|I )input my project content: "(.*)"$/ do |project_content|
   fill_in("project-content", with: project_content)
 end
 
-When /^(?:|I )input my customer name: "(.*)"$/ do |name|
-  fill_in("customer_name", with: name)
-end
-
 When /^(?:|I )input my login email: "(.*)"$/ do |email|
-  fill_in("login-email", with: email)
+  fill_in("customer-email", with: email)
 end
 
 When /^(?:|I )input my login password: "(.*)"$/ do |password|
-  fill_in("login-password", with: password)
+  fill_in("customer-password", with: password)
 end
 
 Given /^I have a customer named "(.*)"$/ do |customer_name|
@@ -164,10 +160,10 @@ Given /^I am logged in as my customer/ do
   click_button("Login")
 end
 
-Given /^I pair customer "(.*)" with project "(.*)"$/ do |customer_name, project_name|
+Given /^I pair customer "(.*)" with project "(.*)"$/ do |customer_name, project_title|
   customer = Customer.find_by_name(customer_name)
-  project = Project.find_by_name(project_name)
-  customer.project = project
+  project = Project.find_by_title(project_title)
+  customer.projects << project
   customer.save
   project.save
 end

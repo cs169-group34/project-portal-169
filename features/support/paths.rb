@@ -45,7 +45,9 @@ module NavigationHelpers
     when /^the customer registration page$/
       '/customers/new'
     when /^the edit page for project: "(.*)"$/
-      'projects/#{Project.find_by(name: $1).id}/edit'
+      "/projects/#{Project.find_by(title: $1).id}/edit"
+    when /^the profile page for project: "(.*)"$/
+      "/projects/#{Project.find_by(title: $1).id}"
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
