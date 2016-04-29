@@ -37,14 +37,11 @@ module ProjectPortal
     #--------------------------------------------------------------------------
     
     #--------------------------------------------------------------------------
-    # * GSI Creation
+    # * Admin
     #--------------------------------------------------------------------------
     
-    # The secret password that must be entered for a GSI to create an account
-    config.x.gsi_secretpass = "thisisapen" 
-    
-    # The message that flashes on the screen when a GSI enters the wrong secret password
-    config.x.gsi_secretpass_incorrect = "Error: GSI creation password field was incorrect."
+    config.x.admin_username = "admin"
+    config.x.admin_password = "secretpass"
     
   end
 end

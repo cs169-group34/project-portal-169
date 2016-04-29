@@ -1,0 +1,39 @@
+#container.profile
+
+  =render partial: "main/profile_login"
+  
+  =render partial: "admin/admin_controls"
+      
+  #profile-right
+  
+    %h2 List of Instructors
+
+    %table
+      %thead
+        %tr
+          %th Name
+          %th E-mail
+          %th Reset
+          %th Delete
+          %th Temp Password
+      %tbody
+        - @instructors.each_with_index do |instructor|
+          %tr
+            %td= instructor.name
+            %td= instructor.email
+            %td Reset Password
+            %td Delete
+            %td= instructor.password
+    
+    %h2 Add New Instructor
+  
+    = form_tag "/admin/instructors/new" do
+      = label :instructor, :name, 'Name:'
+      %br
+      = text_field :instructor, 'name', id: 'name', required: true
+      %p
+      = label :instructor, :email, 'E-mail Address:'
+      %br
+      = text_field :instructor, 'email', id: 'email', required: true
+      %p
+      = submit_tag 'Add New Instructor', data: { disable_with: "Please wait..." }

@@ -1,12 +1,15 @@
-= "Name: #{@instructor.name}"
-%br
-="Email: #{@instructor.email}" 
+#container.profile
 
+  =render partial: "main/profile_login"
+  
+  =render partial: "instructors/instructor_information"
+  
+  #profile-right
 
-%h2 Student Teams
-%table
-  %tbody
-    - @student_teams.each do |student_team|
-      %tr
-        = link_to "#{student_team.name}", "/student_teams/#{student_team.id}"
+    %h2 Student Teams
+    %table
+      %tbody
+        - @student_teams.each do |student_team|
+          %tr
+            = link_to "#{student_team.name}", "/student_teams/#{student_team.id}"
     

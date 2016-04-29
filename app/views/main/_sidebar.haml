@@ -1,0 +1,5 @@
+#sidebar
+    =link_to("Project List", projects_path, :id => 'plist', :class => 'panelbutton')
+    =link_to("Student List", student_teams_path, :id => 'slist', :class => 'panelbutton')
+    - if @current_user and @current_user.is_a?(Instructor)
+        =link_to("Comment List", "/comments", :id => 'clist', :class => 'panelbutton')

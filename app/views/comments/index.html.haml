@@ -1,19 +1,23 @@
-=render :partial => 'common2/common2'
+#container
 
-.content
-  %h1 List of Grades and Comments
+  =render partial: "main/sidebar"
 
-  %table#student_teams
-    %thead
-      %tr
-        %th Student Team Name
-        %th Iteration Number
-        %th Iteration Grade
-        %th Iteration Comments
-    %tbody
-      - @current_user.student_teams.each do |team|
-        - team.iterations.each do |iteration|
-          %td= team.name
-          %td= iteration.iteration_string
-          %td= iteration.instructor_grades
-          %td= iteration.instructor_comments
+  =render partial: "main/settings_login"
+
+  #content.student_teams
+    %h1 List of Grades and Comments
+  
+    %table#student_teams
+      %thead
+        %tr
+          %th Student Team Name
+          %th Iteration Number
+          %th Iteration Grade
+          %th Iteration Comments
+      %tbody
+        - @current_user.student_teams.each do |team|
+          - team.iterations.each do |iteration|
+            %td= team.name
+            %td= iteration.iteration_string
+            %td= iteration.instructor_grades
+            %td= iteration.instructor_comments

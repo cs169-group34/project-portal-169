@@ -1,8 +1,9 @@
 class LogoutController < ApplicationController
   
   def index
-    session.delete(:user_type)
-    session.delete(:user_id)
+    [:user_type, :user_id, :profile_path].each { |sym|
+      session.delete(sym)
+    }
     redirect_to(root_path)
   end
   

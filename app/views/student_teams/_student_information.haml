@@ -1,0 +1,26 @@
+#profile-left
+
+  %h3 Student Team Information
+  
+  %ul
+    %li= "Name: #{@student_team.name}".html_safe
+    %li= "GSI: #{@gsi.name}".html_safe
+    %li= "GSI Email: #{@gsi.email}".html_safe
+    - if @can_edit_profile
+      %br
+      %li= link_to("Edit Profile Page", edit_student_team_path(@student_team))
+      %li= link_to("Reset Password", "/student_teams/#{@student_team.id}/reset_password")
+  
+  %h3 Project Information
+  
+  %ul
+    - if @project.id
+      %li= link_to("Project: #{@project.title}", project_path(@project))
+    - else
+      %li= "Project: #{@project.title}"
+  
+  %ul
+    %li=link_to("GitHub Repository", @student_team.github_link)
+    %li=link_to("Heroku Deployment", @student_team.heroku_link)
+    %li=link_to("CodeClimate Analysis", @student_team.codeclimate_link)
+    %li=link_to("Pivotal Tracker", @student_team.pivotal_link)

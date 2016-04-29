@@ -1,12 +1,14 @@
-%h2 Login
-
-= form_tag "/login" do
-    = label :login_form, :email, 'E-mail Address:'
-    %br
-    = text_field :login_form, 'email', id: 'email'
-    %p
-    = label :login_form, :password, 'Password:'
-    %br
-    = password_field :login_form, 'password', id: 'password'
-    %p
-    = submit_tag 'Login', data: { disable_with: "Please wait..." }
+#form_content
+    
+    %h3 Login
+    
+    = form_tag "/login" do
+        = label :login_form, :username, "Username:"
+        %br
+        = text_field :login_form, 'username', id: 'username'
+        %p
+        = label :login_form, :password, 'Password:'
+        %br
+        = password_field :login_form, 'password', id: 'password'
+        %p
+        = submit_tag 'Login', data: { disable_with: "Please wait..." }

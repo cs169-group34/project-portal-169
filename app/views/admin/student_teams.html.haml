@@ -1,0 +1,40 @@
+#container.profile
+
+  =render partial: "main/profile_login"
+  
+  =render partial: "admin/admin_controls"
+      
+  #profile-right
+  
+    %h2 List of Student Teams
+
+    %table
+      %thead
+        %tr
+          %th ID
+          %th Username
+          %th Name
+          %th Project
+          %th Reset
+          %th Delete
+          %th Temp Password
+      %tbody
+        - @student_teams.each_with_index do |team, i|
+          %tr
+            %td= team.id
+            %td= team.username
+            %td= team.name
+            %td= @projects[i].title
+            %td Reset Password
+            %td Delete
+            %td= team.password
+    %p
+    Export to CSV
+    
+    %h2 Generate Student Teams
+    
+    = form_tag "/admin/student_teams/generate" do
+      = label :student_team, :amount, "Teams to Generate: "
+      = number_field :student_team, 'amount', id: 'student-team-amount', required: true
+      %p
+      = submit_tag 'Create New Teams', data: { disable_with: "Please wait..." }

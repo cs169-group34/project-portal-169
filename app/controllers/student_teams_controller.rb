@@ -2,48 +2,30 @@ class StudentTeamsController < UserController
         
     def index
       super
+      dummy_project = Project.new(title: "Unassigned", content: "Unassigned")
       @student_teams = StudentTeam.all
+      @projects = @student_teams.map { |team| team.project || dummy_project }
     end
-    
-    def create
-      return if reject_existing_user(params[:student_team][:name])
-      @student_team = StudentTeam.create(student_team_params)
-      session[:user_type] = 1
-      session[:user_id] = @student_team.id
-      redirect_to(student_team_path(@student_team))
-    end
+
     
     def edit
-      if can_edit_profile_page?(params[:id].to_i)
-         @student_team = StudentTeam.find(params[:id])
-      else
-        return render body: "You shouldn't be looking at this page."
-      end
+      return display_unauthorized_message if not can_edit_profile_page?(params[:id].to_i)
+      identify_student_team
     end
     
     def update
-      if can_edit_profile_page?(params[:id].to_i)
-        @student_team = StudentTeam.find(params[:id])
-        links = [:github_link, :heroku_link, :codeclimate_link, :pivotal_link]
-        links.each { |attr|
-           @student_team.update_attribute(attr, params[:student_team][attr])
-        }
-        redirect_to(student_team_path(@student_team))
-      else
-        return render body: "You shouldn't be looking at this page."
-      end
+      return display_unauthorized_message if not can_edit_profile_page?(params[:id].to_i)
+      @student_team = StudentTeam.find(params[:id])
+      attributes = [:name, :github_link, :heroku_link, :codeclimate_link, :pivotal_link]
+      attributes.each { |attr|
+         @student_team.update_attribute(attr, params[:student_team][attr])
+      }
+      redirect_to(student_team_path(@student_team))
     end
     
     def show
-      if access_profile_page?(params[:id].to_i)
-         @student_team = StudentTeam.find(params[:id])
-         @iterations = @student_team.iterations
-         @gsi = @student_team.instructor || Instructor.new(name: "Unassigned", email: "Unassigned")
-         @project = @student_team.project || Project.new(title: "Unassigned", content: "Unassigned")
-         @is_instructor = logged_in_as_instructor
-      else
-        return render body: "You shouldn't be looking at this page."
-      end
+      return display_unauthorized_message if not access_profile_page?(params[:id].to_i)
+      identify_student_team
     end
     
     def new_story
@@ -77,16 +59,50 @@ class StudentTeamsController < UserController
       if params[:grades_and_comments][:grades]
         iteration.instructor_grades = params[:grades_and_comments][:grades]
       end
-      if params[:grades_and_comments][:private]
-        iteration.private_comments = params[:grades_and_comments][:comments]
-      else
+      if params[:grades_and_comments][:private_comments]
+        iteration.instructor_private_comments = params[:grades_and_comments][:private_comments]
+      end
+      if params[:grades_and_comments][:comments]
         iteration.instructor_comments = params[:grades_and_comments][:comments]
       end
       iteration.save!
       return redirect_to(student_team_path(student_team))
     end
     
+    def reset_password
+      return display_unauthorized_message if not can_edit_profile_page?(params[:id].to_i)
+      identify_student_team
+    end
+    
+    def perform_reset_password
+      return display_unauthorized_message if not can_edit_profile_page?(params[:id].to_i)
+      student_team = StudentTeam.find(params[:id])
+      if params[:student_team][:old_password] != student_team.password
+        flash[:notice] = "Error: You entered the incorrect old password."
+      elsif params[:student_team][:new_password] != params[:student_team][:confirm_new_password]
+        flash[:notice] = "Error: The new passwords that you entered did not match."
+      else
+        student_team.password = params[:student_team][:new_password]
+        student_team.save!
+        flash[:notice] = "Your password has been succesfully updated."
+      end
+      return redirect_to(student_team_path(student_team))
+    end
+    
     private
+    
+    #--------------------------------------------------------------------------
+    # * Identify Student Team
+    #--------------------------------------------------------------------------
+    
+    def identify_student_team
+      @student_team = StudentTeam.find(params[:id])
+      @can_edit_profile = can_edit_profile_page?(params[:id])
+      @iterations = @student_team.iterations
+      @gsi = @student_team.instructor || Instructor.new(name: "Unassigned", email: "Unassigned")
+      @project = @student_team.project || Project.new(title: "Unassigned", content: "Unassigned")
+      @is_instructor = logged_in_as_instructor
+    end
     
     #--------------------------------------------------------------------------
     # * Student Team Creation

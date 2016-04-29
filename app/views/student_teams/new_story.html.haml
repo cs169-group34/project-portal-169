@@ -1,12 +1,20 @@
-%h2 Submit Story
+#container.profile
 
-= form_tag "/student_teams/#{@student_team.id}/submit_story/" do
-    = label :iteration, :user_stories, 'User Stories:'
-    %br
-    = text_area :iteration, 'user_stories'
-    %p
-    = label :iteration, :email, 'Comments:'
-    %br
-    = text_area :iteration, 'comments'
-    %p
-    = submit_tag 'Submit User Story', data: { disable_with: "Please wait..." }
+  =render partial: "main/profile_login"
+  
+  =render partial: "student_teams/student_information"
+  
+  #profile-right
+  
+    %h2 Submit Story
+      
+    = form_tag "/student_teams/#{@student_team.id}/submit_story/" do
+      = label :iteration, :user_stories, 'User Stories:'
+      %br
+      = text_area :iteration, 'user_stories'
+      %p
+      = label :iteration, :email, 'Comments:'
+      %br
+      = text_area :iteration, 'comments'
+      %p
+      = submit_tag 'Submit User Story', data: { disable_with: "Please wait..." }

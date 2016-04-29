@@ -1,0 +1,61 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#left-admin {
+    
+    float: left;
+    width: 240px;
+    
+    h3 {
+        font-family: 'Verdana';
+        font-size: 0.8em;
+        list-style: none;
+        padding: 2px 0;
+        text-transform: uppercase;
+    }
+    
+    ul {
+        padding: 0;
+    }
+    
+    li {
+        font-family: 'Courier New';
+        list-style: none;
+        padding: 2px 0;
+        font-size: 12px;
+    }
+    
+    a:link, a:visited, a:hover {
+        color: #006a80;
+        font-size: 1em;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: rgb(187, 0, 28);
+    }
+    
+}
+
+div#right-admin {
+    
+    float: left;
+    width: calc(100% - 240px);
+    
+    font-family: 'Verdana';
+    font-size: 12px;
+    
+    h2 {
+        font-family: 'Lora';
+        font-size: 24px;
+        font-weight: normal;
+        padding-bottom: 0.25em;
+        border-bottom: 1px solid rgb(192, 192, 192);
+    }
+    
+    input[type=number] {
+        width: 64px;    
+    }
+    
+}

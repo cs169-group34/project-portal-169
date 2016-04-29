@@ -1,0 +1,10 @@
+#profile-left
+
+  %h3 Instructor Information
+
+  %ul
+    %li= "Name: #{@instructor.name}"
+    %li= "Email: #{@instructor.email}"
+    %br
+    %li= link_to("Edit Profile Page", edit_instructor_path(@instructor))
+    %li= link_to("Reset Password", "/instructors/#{@instructor.id}/reset_password")

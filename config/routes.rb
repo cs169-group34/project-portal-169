@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  #----------------------------------------------------------------------------
+  # * Admin Controls
+  #----------------------------------------------------------------------------
+  
+  get "admin" => "admin#index"
+  
+  get "admin/semester" => "admin#semester"
+  
+  get "admin/student_teams" => "admin#student_teams"
+  post "admin/student_teams/generate" => "admin#generate_student_teams"
+  
+  get "admin/instructors" => "admin#instructors"
+  post "admin/instructors/new" => "admin#create_instructor"
+  
+  get "admin/rubric" => "admin#rubric"
+
   get 'comments/index'
 
   get "logout" => "logout#index"
@@ -16,6 +32,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
   
   get "/student_teams/:id/submit_story/" => "student_teams#new_story"
+  
+  get "/student_teams/:id/reset_password/" => "student_teams#reset_password"
+  post "/student_teams/:id/reset_password/" => "student_teams#perform_reset_password"
+  
   post "/student_teams/:id/submit_story/" => "student_teams#create_story"
   post "/student_teams/:id/assign/" => "student_teams#assign"
   post "/student_teams/:id/add_gsi_comments/:iter_id/" => "student_teams#add_gsi_comments"

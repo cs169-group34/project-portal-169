@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#student_teams {
+#content.student_teams {
     //font-family: 'times new roman';
     color: #000000;
     h1 {
@@ -32,3 +32,90 @@
     }
 }
 
+div#student-team-left {
+    
+    float: left;
+    width: 200px;
+    
+    font-family: 'Verdana';
+    
+    h3 {
+        font-size: 0.8em;
+        list-style: none;
+        padding: 2px 0;
+        text-transform: uppercase;
+    }
+    
+    ul {
+        padding: 0;
+    }
+    
+    li {
+        list-style: none;
+        padding: 2px 0;
+        font-size: 12px;
+    }
+    
+    a:link, a:visited, a:hover {
+        font-family: 'Courier New';
+        color: #006a80;
+        font-size: 1em;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: rgb(187, 0, 28);
+    }
+    
+}
+
+div#student-team-right {
+    
+    float: left;
+    width: calc(100% - 240px);
+    
+    font-family: 'Verdana';
+    font-size: 12px;
+    
+    h2 {
+        font-family: 'Lora';
+        font-size: 24px;
+        font-weight: normal;
+        padding-bottom: 0.25em;
+        border-bottom: 1px solid rgb(192, 192, 192);
+    }
+    
+    label {
+        font-size: 0.8em;
+        font-weight: bold;
+        list-style: none;
+        padding: 4px 0;
+        margin: 4px 0;
+        text-transform: uppercase;
+    }
+    
+    input[type=number] {
+        width: 64px;    
+    }
+    
+    input[type=text] {
+        width: 320px;
+    }
+    
+    a:link, a:visited, a:hover {
+        font-family: 'Courier New';
+        color: #006a80;
+        font-size: 1em;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: rgb(187, 0, 28);
+    }
+    
+    textarea {
+        width: 320px;
+        height: 96px;
+    }
+    
+}

@@ -1,18 +1,20 @@
-=render :partial => 'common2/common2'
+#container
 
-#student_teams.content
-  %h1 List of Student Teams
+  =render partial: "main/sidebar"
 
-  %table
-    %thead
-      %tr
-        %th Student Team Name
-        %th Student Team E-mail
-    %tbody
-      - @student_teams.each do |team|
+  =render partial: "main/settings_login"
+  
+  #content.student_teams
+    %h1 List of Student Teams
+
+    %table
+      %thead
         %tr
-          %td= team.name
-          %td= team.email
-          
-/
-  make sortable?
+          %th Student Team Name
+          %th Student Team Project
+      %tbody
+        - @student_teams.each_with_index do |team, i|
+          %tr
+            %td
+              =link_to(team.name, student_team_path(team))
+            %td= @projects[i].title

@@ -1,20 +1,38 @@
-%h2 Edit Student Team
+#container.profile
 
-= form_tag(student_team_path(@student_team), method: :put) do
-    = label :student_team, :github_link, 'GitHub Link:'
-    %br
-    = text_field :student_team, 'github_link'
-    %p
-    = label :student_team, :heroku_link, 'Heroku Link:'
-    %br
-    = text_field :student_team, 'heroku_link'
-    %p
-    = label :student_team, :codeclimate_link, 'CodeClimate Link:'
-    %br
-    = text_field :student_team, 'codeclimate_link'
-    %p
-    = label :student_team, :pivotal_link, 'PivotalTracker Link:'
-    %br
-    = text_field :student_team, 'pivotal_link'
-    %p
-    = submit_tag 'Update Project Information', data: { disable_with: "Please wait..." }
+  =render partial: "main/profile_login"
+  
+  =render partial: "student_teams/student_information"
+  
+  #profile-right
+
+    %h2 Edit Student Team
+    
+    = form_tag(student_team_path(@student_team), method: :put) do
+    
+      %h3 Student Team Information
+      
+      = label :student_team, :name, 'Student Team Name:'
+      %br
+      = text_field :student_team, 'name'
+      %p
+    
+      %h3 Project Information
+      
+      = label :student_team, :github_link, 'GitHub Link:'
+      %br
+      = text_field :student_team, 'github_link'
+      %p
+      = label :student_team, :heroku_link, 'Heroku Link:'
+      %br
+      = text_field :student_team, 'heroku_link'
+      %p
+      = label :student_team, :codeclimate_link, 'CodeClimate Link:'
+      %br
+      = text_field :student_team, 'codeclimate_link'
+      %p
+      = label :student_team, :pivotal_link, 'PivotalTracker Link:'
+      %br
+      = text_field :student_team, 'pivotal_link'
+      %p
+      = submit_tag 'Update Project Information', data: { disable_with: "Please wait..." }

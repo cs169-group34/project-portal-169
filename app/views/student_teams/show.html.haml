@@ -1,86 +1,69 @@
-%h2 Student Team Information
+#container.profile
 
-= "Name: #{@student_team.name}"
-%br
-= "Email: #{@student_team.email}" 
-%br
-= "GSI: #{@gsi.name}"
-%br
-= "GSI Email: #{@gsi.email}" 
-%br
-
-%h2 Project Information
-
-= "Project name: #{@project.title}"
-%br
-= "Project Content:" 
-%br
-= "#{@project.content}"
-%br
-=link_to("GitHub Repository", @student_team.github_link)
-%br
-=link_to("Heroku Deployment", @student_team.heroku_link)
-%br
-=link_to("CodeClimate Analysis", @student_team.codeclimate_link)
-%br
-=link_to("Pivotal Tracker", @student_team.pivotal_link)
-%p
-=link_to("Edit Profile Page", edit_student_team_path(@student_team))
-
-%h2 Iterations
-- @iterations.each do |iteration|
-  .iteration
-    %h3=iteration.iteration_string
-    %p
-    %strong Date: 
-    ="#{iteration.created_at_string}"
-    %p
-    %strong User Stories:
-    %br
-    =iteration.user_stories
-    %p
-    %strong Comments:
-    %br
-    =iteration.comments
-    %p
-    - if iteration.instructor_grades
-      %strong= "Grade: #{iteration.instructor_grades}/100"
-    %p
-    - if iteration.instructor_comments
-      %strong Instructor Comments:
-      %br
-      =iteration.instructor_comments
-    - if @is_instructor
-      %p
-      %strong Private Comments:
-      %br
-      =iteration.private_comments
-      %p
-      = form_tag "/student_teams/#{@student_team.id}/add_gsi_comments/#{iteration.id}/" do
-        = label :grades_and_comments, :grades, 'Grade to Assign:'
-        %br
-        = number_field :grades_and_comments, 'grades', id: 'grades'
-        %p
-        = label :grades_and_comments, :comments, 'Comments:'
-        %br
-        = text_area :grades_and_comments, 'comments', id: 'comments'
-        %p
-        = label :grades_and_comments, :private, 'Private:'
-        = check_box :grades_and_comments, 'private', id: 'Private'
-        %p
-        = submit_tag 'Submit', id: 'submit grades and comments', data: { disable_with: "Please wait..." }
+  =render partial: "main/profile_login"
+  
+  =render partial: "student_teams/student_information"
+    
+  #profile-right
+    
+    %h2 Iterations
+    - if @project.id
+      - @iterations.each do |iteration|
+        .iteration
+          %h3=iteration.iteration_string
+          %p
+          %strong Date: 
+          ="#{iteration.created_at_string}"
+          %p
+          %strong User Stories:
+          %br
+          =iteration.user_stories
+          %p
+          %strong Student Comments:
+          %br
+          =iteration.comments
+          %p
+          - if iteration.instructor_grades
+            %strong= "Grade: #{iteration.instructor_grades}/100"
+          %p
+          - if iteration.instructor_comments
+            %strong Instructor Comments:
+            %br
+            =iteration.instructor_comments
+            %p
+          - if @is_instructor
+            - if iteration.instructor_private_comments
+              %strong Private Comments:
+              %br
+              =iteration.instructor_private_comments
+              %p
+            = form_tag "/student_teams/#{@student_team.id}/add_gsi_comments/#{iteration.id}/" do
+              = label :grades_and_comments, :grades, 'Grade to Assign:'
+              %br
+              = number_field :grades_and_comments, 'grades', id: 'grades'
+              %p
+              = label :grades_and_comments, :comments, 'Public Comments:'
+              %br
+              = text_area :grades_and_comments, 'comments', id: 'comments'
+              %p
+              = label :grades_and_comments, :private_comments, 'Private Comments:'
+              %br
+              = text_area :grades_and_comments, 'private_comments', id: 'comments'
+              %p
+              = submit_tag 'Submit', id: 'submit grades and comments', data: { disable_with: "Please wait..." }
+      - if @can_edit_profile
+        = link_to("Submit Iteration", "/student_teams/#{@student_team.id}/submit_story")
     - else
-      %p
-      = link_to("Submit Iteration", "/student_teams/#{@student_team.id}/submit_story")
-%p
-- if @is_instructor
-  = form_tag "/student_teams/#{@student_team.id}/assign" do
-    = label :assign, :project, 'Project to assign:'
-    %br
-    = text_field :assign, 'project', id: 'assign to project'
-    %p
-    = label :assign, :instructor, 'Instructor to assign:'
-    %br
-    = text_field :assign, 'instructor', id: 'assign to instructor'
-    %p
-    = submit_tag 'Assign', id: 'Assign', data: { disable_with: "Please wait..." }
+      - if @is_instructor
+        = form_tag "/student_teams/#{@student_team.id}/assign" do
+          = label :assign, :project, 'Project to assign:'
+          %br
+          = text_field :assign, 'project', id: 'assign to project'
+          %p
+          = label :assign, :instructor, 'Instructor to assign:'
+          %br
+          = text_field :assign, 'instructor', id: 'assign to instructor'
+          %p
+          = submit_tag 'Assign', id: 'Assign', data: { disable_with: "Please wait..." }
+      - else
+        %h3 You have not yet been assigned a project.

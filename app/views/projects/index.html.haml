@@ -1,19 +1,20 @@
-=render :partial => 'common2/common2'
+#container
 
+  =render partial: "main/sidebar"
 
-#projects.content
-  %h1 List of Projects
+  =render partial: "main/settings_login"
 
-  =link_to("Add Project", new_project_path)
-
-  %ul
-    - @projects.each do |project|
-      %li
-        =image_tag(asset_path("project_no_image.png"))
-        %h2= project.title
-        %p= project.content
-      - if project != @projects.last
-        <hr/>
+  #content.projects
+    %h1 List of Projects
+  
+    =link_to("Add Project", new_project_path)
+  
+    %ul
+      - @projects.each do |project|
+        %li
+          =image_tag(asset_path("project_no_image.png"))
+          %h2= project.title
+          %p= project.content
+        - if project != @projects.last
+          <hr/>
         
-/
-  things to do: project view filter; coloring based on project status; load project thumbnail if exists

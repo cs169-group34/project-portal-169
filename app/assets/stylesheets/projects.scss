@@ -4,8 +4,17 @@
 
 /*word wrap or no word wrap?*/
 
-#projects {
+#content.projects {
      //font-family: 'arial';
+     
+     border: 1px solid;
+     border-bottom: none;
+     
+     h1 {
+          margin: 0;
+          padding: .5em;
+          text-align: center;
+     }
 
      ul {
           list-style-type: none;

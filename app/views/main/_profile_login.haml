@@ -1,0 +1,6 @@
+#login-settings.profile
+  - if not session[:profile_path].empty?
+    ="[#{link_to('Profile Page', session[:profile_path])}]".html_safe
+    ="[#{link_to('Logout', logout_path)}]".html_safe
+  - else
+    ="[#{link_to('Login', login_path)}]".html_safe
