@@ -97,7 +97,7 @@ class StudentTeamsController < UserController
     
     def identify_student_team
       @student_team = StudentTeam.find(params[:id])
-      @can_edit_profile = can_edit_profile_page?(params[:id])
+      @can_edit_profile = can_edit_profile_page?(params[:id].to_i)
       @iterations = @student_team.iterations
       @gsi = @student_team.instructor || Instructor.new(name: "Unassigned", email: "Unassigned")
       @project = @student_team.project || Project.new(title: "Unassigned", content: "Unassigned")
