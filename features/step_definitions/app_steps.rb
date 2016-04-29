@@ -145,11 +145,11 @@ When /^(?:|I )input my customer name: "(.*)"$/ do |name|
 end
 
 When /^(?:|I )input my login email: "(.*)"$/ do |email|
-  fill_in("login-email", with: email)
+  fill_in("customer_email", with: email)
 end
 
 When /^(?:|I )input my login password: "(.*)"$/ do |password|
-  fill_in("login-password", with: password)
+  fill_in("customer_password", with: password)
 end
 
 Given /^I have a customer named "(.*)"$/ do |customer_name|

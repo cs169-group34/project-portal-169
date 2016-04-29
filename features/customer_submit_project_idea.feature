@@ -9,6 +9,9 @@ Background: on customer project submit page
 Scenario:
     When I input my project title: "Awesome Project"
     And I input my project content: "Not really so awesome."
+    And I input my customer name: "Great Customer"
+    And I input my login email: "great_customer@gmail.com"
+    And I input my login password: "gcpass"
     And I press "Submit Project"
     Then I should be on the project details page for project with name: "Awesome Project"
     And I should see "Awesome Project"

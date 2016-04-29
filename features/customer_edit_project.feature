@@ -10,7 +10,7 @@ Background:
     Given I have a customer named "Great Customer"
     Given I pair customer "Great Customer" with project "Sample Project 1"
     Given I am logged in as my customer
-    
+
 Scenario:
     When I am on the edit page for project: "Sample Project 1"
     Then I should see "Sample Project 1"

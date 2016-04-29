@@ -5,17 +5,25 @@ class ProjectsController < ApplicationController
       @projects = Project.all
     end
     
-    def new
-          
+    def edit
+      
     end
     
     def create
-      @project = Project.create(project_params)
-      redirect_to(project_path(@project))
+      @customer = Customer.find_by(email: customer_params[:email], password: customer_params[:password])
+      if @customer == nil
+        return render body: "Invalid login credentials"
+      else
+        @project = Project.create(project_params)
+        @customer.projects<<@project
+        @customer.save!
+        redirect_to(project_path(@project))
+      end
     end
     
     def show
       @project = Project.find(params[:id])
+      @customer = @project.customer
       @student_team = @project.student_team || StudentTeam.new(name: "Unassigned")
       @is_instructor = logged_in_as_instructor
       @is_assigned_msg = "Status: " + if @project.assigned then 'Assigned' else 'Unassigned' end
@@ -44,6 +52,10 @@ class ProjectsController < ApplicationController
     
     def project_params
       params.require(:project).permit(:title, :content) 
+    end
+    
+    def customer_params
+      params.require(:customer).permit(:name, :email, :password)
     end
     
     #--------------------------------------------------------------------------

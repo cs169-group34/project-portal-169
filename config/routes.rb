@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :customers
   get 'comments/index'
 
   get "logout" => "logout#index"

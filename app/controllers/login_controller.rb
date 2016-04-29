@@ -5,10 +5,13 @@ class LoginController < ApplicationController
     password = params[:login_form][:password]
     student = StudentTeam.find_by(email: email, password: password)
     instructor = Instructor.find_by(email: email, password: password)
+    customer = Customer.find_by(email: email, password: password)
     if student
       login_as_student(student)
     elsif instructor
       login_as_instructor(instructor)
+    elsif customer
+      login_as_customer(customer)
     else
       flash[:notice] = "There is no user asssociated with those login details."
       # Eventually this should redirect to index, and flash an error message
@@ -28,6 +31,11 @@ class LoginController < ApplicationController
   def login_as_instructor(instructor)
     session[:user_type] = 2
     session[:user_id] = instructor.id
+  end
+  
+  def login_as_customer(customer)
+    session[:user_type] = 3
+    session[:user_id] = customer.id
   end
   
 end
