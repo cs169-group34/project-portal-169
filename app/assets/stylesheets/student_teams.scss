@@ -2,36 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#student_teams {
-    //font-family: 'times new roman';
-    color: #000000;
-    h1 {
-        margin-left: 24px;
-    }
-    
-    table {
-        border: none;
-        border-collapse: collapse;
-        width: calc(100% - 48px);
-        margin-left: 24px;
-        
-        td {
-            border: none;
-        }
-        
-        th {
-            text-align: left;
-            border: none;
-        }
-    }
-    
-    tbody {
-        tr:nth-of-type(odd) {
-          background-color: rgba(200, 230, 250, 1.0);
-        }
-    }
-}
-
 div#student-team-left {
     
     float: left;

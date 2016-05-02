@@ -1,12 +1,13 @@
-%h2 Edit Project
-
-= form_tag project_path(@project), method: :put do
-    = label :project, :title, 'Title'
-    %br
-    = text_field :project, 'title', id: 'project-title', required: true
-    %p
-    = label :project, :content, 'Content'
-    %br
-    = text_area :project, 'content', id: 'project-content', required: true
-    %p
-    = submit_tag 'Submit Changes', data: { disable_with: "Please wait..." }
+#editproject.newform
+    %h3 Edit Project
+    
+    = form_tag project_path(@project), method: :put do
+        = label :project, :title, 'Title'
+        %br
+        = text_field :project, 'title', id: 'project-title', required: true
+        %p
+        = label :project, :content, 'Content'
+        %br
+        = text_area :project, 'content', id: 'project-content', required: true
+        %p
+        = submit_tag 'Submit Changes', data: { disable_with: "Please wait..." }

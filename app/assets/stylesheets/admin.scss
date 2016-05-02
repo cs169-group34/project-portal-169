@@ -5,7 +5,9 @@
 div#left-admin {
     
     float: left;
-    width: 240px;
+    width: 200px;
+    //border: 1px solid red;
+    margin-left: 24px;
     
     h3 {
         font-family: 'Verdana';
@@ -41,7 +43,7 @@ div#left-admin {
 div#right-admin {
     
     float: left;
-    width: calc(100% - 240px);
+    width: calc(100% - 220px);
     
     font-family: 'Verdana';
     font-size: 12px;

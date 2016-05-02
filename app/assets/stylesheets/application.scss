@@ -82,64 +82,23 @@ div#login-settings {
 
 div#content {
     margin: 0 24px;
-    border: 1px blue;
+    //border: 1px blue;
 }
 
 div#container {
     position: absolute;
-    border: 1px solid blue;
+    //border: 1px solid blue;
     //width: 100%;
     margin: 0 128px;
     width: calc(100% - 256px);
     //min-height: 100%; 
 }
 
-/*
-#container.profile {
-    margin: 0 128px; 
-    //width: calc(100% - 200px);
-    //border: 1px solid blue;
-}
-
-#login-settings.profile {
-    margin: 24px 0;
-}*/
-
-#content.student_teams {
-    //font-family: 'times new roman';
-    color: #000000;
-    h1 {
-        margin-left: 10%;
-    }
-    
-    table {
-        border: none;
-        border-collapse: collapse;
-        width: 80%;
-        margin-left: 10%;
-        
-        td {
-            border: none;
-        }
-        
-        th {
-            text-align: left;
-            border: none;
-        }
-    }
-    
-    tbody {
-        tr:nth-of-type(odd) {
-          background-color: rgba(200, 230, 250, 1.0);
-        }
-    }
-}
-
 div#profile-left {
     
     float: left;
     width: 200px;
-    border: 1px solid red;
+    //border: 1px solid red;
     margin-left: 24px;
     
     font-family: 'Verdana';
@@ -177,7 +136,7 @@ div#profile-right {
     
     float: left;
     width: calc(100% - 248px);
-    border: 1px solid green;
+    //border: 1px solid green;
     
     font-family: 'Verdana';
     font-size: 12px;
@@ -190,6 +149,26 @@ div#profile-right {
         border-bottom: 1px solid rgb(192, 192, 192);
     }
     
+    table {
+        border: none;
+        border-collapse: collapse;
+        
+        th, td {
+            max-width: 128px;
+            padding-right: 8px;
+            word-wrap: break-word;
+        }
+        
+        td {
+            border: none;
+        }
+        
+        th {
+            text-align: left;
+            border: none;
+        }
+    }
+    
     label {
         font-size: 0.8em;
         font-weight: bold;
@@ -200,7 +179,7 @@ div#profile-right {
     }
     
     input[type=number] {
-        width: 64px;    
+        width: 64px;
     }
     
     input[type=text] {
@@ -227,6 +206,83 @@ div#profile-right {
     
 }
 
+.bigtable {
+    //font-family: 'times new roman';
+    color: black;
+    h1 {
+        margin-left: 24px;
+        font-family: "HelveticaNeue-Light", tahoma, sans-serif;
+        //font-weight: normal;
+    }
+    
+    table {
+        border: none;
+        border-collapse: collapse;
+        width: calc(100% - 48px);
+        margin-left: 24px;
+        
+        th, td {
+            font-family: tahoma, helvetica, sans-serif;
+            word-wrap: break-word;
+        }
+        
+        td {
+            border: none;
+        }
+        
+        th {
+            text-align: left;
+            border: none;
+        }
+    }
+    
+    tbody {
+        tr:nth-of-type(odd) {
+          background-color: rgba(200, 230, 250, 1.0);
+        }
+    }
+}
+
+/*
+#content.student_teams {
+    //font-family: 'times new roman';
+    color: #000000;
+    h1 {
+        margin-left: 10%;
+    }
+    
+    table {
+        border: none;
+        border-collapse: collapse;
+        width: 80%;
+        margin-left: 10%;
+        
+        td {
+            border: none;
+        }
+        
+        th {
+            text-align: left;
+            border: none;
+        }
+    }
+    
+    tbody {
+        tr:nth-of-type(odd) {
+          background-color: rgba(200, 230, 250, 1.0);
+        }
+    }
+}*/
+/*
+#container.profile {
+    margin: 0 128px; 
+    //width: calc(100% - 200px);
+    //border: 1px solid blue;
+}
+
+#login-settings.profile {
+    margin: 24px 0;
+}*/
 /*div#sidebar {
     
     position:absolute;
