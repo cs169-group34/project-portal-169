@@ -13,22 +13,21 @@
  *= require_tree .
  *= require_self
  */
+ 
+// Place all the styles related to the student_teams controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
 
 html {
-     /*viewport*/
     margin: 0;
     padding: 0;
 	height: 100%;
-	
-	/*border: 1px solid green;*/
 }
 
 body {
-    
     margin: 0;
     padding: 0;
 	min-height: 100%;
-	
 }
 
 div#header {
@@ -53,13 +52,182 @@ div#header {
     
 }
 
-div#container {
-    position: absolute;
-    width: 100%;
-    min-height: calc(100% - 71px); 
+div#login-settings {
+    margin: 24px;
+    
+    border-top: 1px solid rgb(172, 172, 172);
+    border-bottom: 1px solid rgb(172, 172, 172);
+    
+    font-weight: regular;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    color: rgb(127, 127, 127);
+    
+    width: auto;
+    text-align: right;
+    padding-top: 0.5em;
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+
+    a:link, a:visited, a:hover {
+        color: #a0a8c8;
+        font-size: 1em;
+        text-decoration: none;
+    }
+     
+    a:hover {
+        text-decoration: underline;
+    }
 }
 
-div#sidebar {
+div#content {
+    margin: 0 24px;
+    border: 1px blue;
+}
+
+div#container {
+    position: absolute;
+    border: 1px solid blue;
+    //width: 100%;
+    margin: 0 128px;
+    width: calc(100% - 256px);
+    //min-height: 100%; 
+}
+
+/*
+#container.profile {
+    margin: 0 128px; 
+    //width: calc(100% - 200px);
+    //border: 1px solid blue;
+}
+
+#login-settings.profile {
+    margin: 24px 0;
+}*/
+
+#content.student_teams {
+    //font-family: 'times new roman';
+    color: #000000;
+    h1 {
+        margin-left: 10%;
+    }
+    
+    table {
+        border: none;
+        border-collapse: collapse;
+        width: 80%;
+        margin-left: 10%;
+        
+        td {
+            border: none;
+        }
+        
+        th {
+            text-align: left;
+            border: none;
+        }
+    }
+    
+    tbody {
+        tr:nth-of-type(odd) {
+          background-color: rgba(200, 230, 250, 1.0);
+        }
+    }
+}
+
+div#profile-left {
+    
+    float: left;
+    width: 200px;
+    border: 1px solid red;
+    margin-left: 24px;
+    
+    font-family: 'Verdana';
+    
+    h3 {
+        font-size: 0.8em;
+        list-style: none;
+        padding: 2px 0;
+        text-transform: uppercase;
+    }
+    
+    ul {
+        padding: 0;
+    }
+    
+    li {
+        list-style: none;
+        padding: 2px 0;
+        font-size: 12px;
+    }
+    
+    a:link, a:visited, a:hover {
+        font-family: 'Courier New';
+        color: #006a80;
+        font-size: 1em;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: rgb(187, 0, 28);
+    }
+}
+
+div#profile-right {
+    
+    float: left;
+    width: calc(100% - 248px);
+    border: 1px solid green;
+    
+    font-family: 'Verdana';
+    font-size: 12px;
+    
+    h2 {
+        font-family: 'Lora';
+        font-size: 24px;
+        font-weight: normal;
+        padding-bottom: 0.25em;
+        border-bottom: 1px solid rgb(192, 192, 192);
+    }
+    
+    label {
+        font-size: 0.8em;
+        font-weight: bold;
+        list-style: none;
+        padding: 4px 0;
+        margin: 4px 0;
+        text-transform: uppercase;
+    }
+    
+    input[type=number] {
+        width: 64px;    
+    }
+    
+    input[type=text] {
+        width: 320px;
+    }
+    
+    a:link, a:visited, a:hover {
+        font-family: 'Courier New';
+        color: #006a80;
+        font-size: 1em;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: rgb(187, 0, 28);
+    }
+    
+    textarea {
+        width: 320px;
+        height: 96px;
+    }
+    
+    margin-bottom: 32px;
+    
+}
+
+/*div#sidebar {
     
     position:absolute;
     width: 220px;
@@ -67,7 +235,7 @@ div#sidebar {
     overflow: hidden;
     background-color: #3e4146;
     
-    font-family: 'magic', 'Courier New', monospace;
+    font-family: 'Courier New', monospace;
     font-size: 24px;
     text-align: right;
     
@@ -120,187 +288,4 @@ div#sidebar {
           background: linear-gradient(top, #c6e2ff, #bada55);
      }
     
-}
-
-div#login-settings {
-    
-    margin: 24px;
-    margin-left: 252px;
-    
-    border-top: 1px solid rgb(172, 172, 172);
-    border-bottom: 1px solid rgb(172, 172, 172);
-    
-    font-weight: regular;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 12px;
-    
-    width: auto;
-    text-align: right;
-    padding-top: 0.5em;
-    padding-right: 1em;
-    padding-bottom: 0.5em;
-
-    a:link, a:visited, a:hover {
-        color: #a0a8c8;
-        font-size: 1em;
-        text-decoration: none;
-    }
-     
-    a:hover {
-        text-decoration: underline;
-    }
-    
-}
-
-div#content {
-    margin-right: 32px;
-    margin-left: 252px;
-    margin-bottom: 32px;
-}
-
-#container.profile {
-    margin: 0 128px; 
-    width: calc(100% - 256px); 
-}
-
-#login-settings.profile {
-    margin: 24px 0;
-}
-
-// Place all the styles related to the student_teams controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-#content.student_teams {
-    //font-family: 'times new roman';
-    color: #000000;
-    h1 {
-        margin-left: 10%;
-    }
-    
-    table {
-        border: none;
-        border-collapse: collapse;
-        width: 80%;
-        margin-left: 10%;
-        
-        td {
-            border: none;
-        }
-        
-        th {
-            text-align: left;
-            border: none;
-        }
-    }
-    
-    tbody {
-        tr:nth-of-type(odd) {
-          background-color: rgba(200, 230, 250, 1.0);
-        }
-    }
-}
-
-div#profile-left {
-    
-    float: left;
-    width: 200px;
-    
-    font-family: 'Verdana';
-    
-    h3 {
-        font-size: 0.8em;
-        list-style: none;
-        padding: 2px 0;
-        text-transform: uppercase;
-    }
-    
-    ul {
-        padding: 0;
-    }
-    
-    li {
-        list-style: none;
-        padding: 2px 0;
-        font-size: 12px;
-    }
-    
-    a:link, a:visited, a:hover {
-        font-family: 'Courier New';
-        color: #006a80;
-        font-size: 1em;
-        text-decoration: none;
-    }
-    
-    a:hover {
-        color: rgb(187, 0, 28);
-    }
-    
-    margin-bottom: 32px;
-    
-}
-
-div#profile-right {
-    
-    float: left;
-    width: calc(100% - 240px);
-    
-    font-family: 'Verdana';
-    font-size: 12px;
-    
-    h2 {
-        font-family: 'Lora';
-        font-size: 24px;
-        font-weight: normal;
-        padding-bottom: 0.25em;
-        border-bottom: 1px solid rgb(192, 192, 192);
-    }
-    
-    label {
-        font-size: 0.8em;
-        font-weight: bold;
-        list-style: none;
-        padding: 4px 0;
-        margin: 4px 0;
-        text-transform: uppercase;
-    }
-    
-    input[type=number] {
-        width: 64px;    
-    }
-    
-    input[type=text] {
-        width: 320px;
-    }
-    
-    a:link, a:visited, a:hover {
-        font-family: 'Courier New';
-        color: #006a80;
-        font-size: 1em;
-        text-decoration: none;
-    }
-    
-    a:hover {
-        color: rgb(187, 0, 28);
-    }
-    
-    textarea {
-        width: 320px;
-        height: 96px;
-    }
-    
-    margin-bottom: 32px;
-    
-}
-
-
-/* works sometimes? mostly doesn't work
-https://gist.github.com/anotheruiguy/7379570 - for reference
-@font-face {
-     font-family: 'magic';
-     src: url('https://mplus-fonts.osdn.jp/webfonts/basic_latin/mplus-1p-thin-sub.eot');
-     src: url('https://mplus-fonts.osdn.jp/webfonts/basic_latin/mplus-1p-thin-sub.eot?#iefix') format('embedded-opentype'),
-          url('https://mplus-fonts.osdn.jp/webfonts/basic_latin/mplus-1p-thin-sub.woff') format('woff'),
-          url('https://mplus-fonts.osdn.jp/webfonts/basic_latin/mplus-1p-thin-sub.ttf') format('truetype');
-}
-*/
+}*/

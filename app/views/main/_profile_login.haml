@@ -1,6 +1,10 @@
 #login-settings.profile
-  - if not session[:profile_path].empty?
-    ="[#{link_to('Profile Page', session[:profile_path])}]".html_safe
-    ="[#{link_to('Logout', logout_path)}]".html_safe
-  - else
-    ="[#{link_to('Login', login_path)}]".html_safe
+    - if not session[:profile_path].empty?
+        ="[#{link_to("Project List", projects_path)}]".html_safe
+        ="[#{link_to("Student List", student_teams_path)}]".html_safe
+        - if @current_user and @current_user.is_a?(Instructor)
+            ="[#{link_to("Comment List", "/comments")}]".html_safe
+        ="[#{link_to('Profile Page', session[:profile_path])}]".html_safe
+        ="[#{link_to('Logout', logout_path)}]".html_safe
+    - else
+        ="[#{link_to('Login', login_path)}]".html_safe
